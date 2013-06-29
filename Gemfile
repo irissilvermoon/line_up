@@ -24,11 +24,18 @@ group :assets do
 end
 
 group :test, :development do
-  gem 'rspec-rails', '~> 2.11'
+  gem 'rspec-rails', '~> 2.13.0'
 end
+
+group :development do
+  gem 'better_errors'
+end
+
 
 group :test do
   gem 'capybara', '1.1.2'
+  gem 'factory_girl', '2.6.4'
+  gem 'email_spec', '1.2.1'
 end
 
 
