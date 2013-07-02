@@ -1,8 +1,8 @@
 LineUp::Application.routes.draw do
 
-  devise_for :users, :controllers => { :regstrations => "registrations" }
+  devise_for :users, :controllers => { :registrations => "registrations" }
 
-  get 'awaiting_confirmation',
+  get '/awaiting_confirmation',
       :to => 'users#confirmation',
       :as => 'confirm_user'
 

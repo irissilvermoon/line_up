@@ -7,7 +7,7 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 gem 'jquery-rails'
-gem 'devise'
+gem 'devise', '~> 2.2'
 
 
 # Gems used only for assets and not required
@@ -25,10 +25,12 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.13.0'
+  gem 'jazz_hands'
 end
 
 group :development do
   gem 'better_errors'
+  gem 'letter_opener', '~> 1.1.0'
 end
 
 
@@ -36,6 +38,7 @@ group :test do
   gem 'capybara', '1.1.2'
   gem 'factory_girl', '2.6.4'
   gem 'email_spec', '1.2.1'
+  gem 'rspec-rails', '~> 2.13.0'
 end
 
 
