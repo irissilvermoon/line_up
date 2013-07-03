@@ -115,7 +115,7 @@ $default-float: left;
 //
 
 // $row-width: emCalc(1000px);
-// $column-gutter: emCalc(30px);
+$column-gutter: emCalc(60px);
 // $total-columns: 12;
 
 //
@@ -851,9 +851,10 @@ $default-float: left;
 
 // Background and border styles
 
-// $panel-bg: darken(#fff, 5%);
+ $panel-bg: darken(#ddf1f3, 5%);
 // $panel-border-style: solid;
-// $panel-border-size: 1px;
+ $panel-border-size: 1px;
+
 
 // Control how much we darken things on hover
 
@@ -1208,7 +1209,7 @@ $default-float: left;
 
 // Height and margin
 
-// $topbar-height: 45px;
+ $topbar-height: 50px;
 // $topbar-margin-bottom: emCalc(30px);
 
 // Control Input height for top bar
@@ -1218,7 +1219,7 @@ $default-float: left;
 // Controlling the styles for the title in the top bar
 
 // $topbar-title-weight: bold;
-// $topbar-title-font-size: emCalc(17px);
+$topbar-title-font-size: emCalc(20px);
 
 // Style the top bar dropdown elements
 

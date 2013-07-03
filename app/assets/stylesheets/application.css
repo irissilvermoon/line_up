@@ -12,3 +12,7 @@
  *= require foundation_and_overrides
  *= require_tree .
  */
+
+ .panel {
+   box-shadow: 2px 2px 2px #1e4548;
+ }
