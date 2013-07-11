@@ -8,6 +8,7 @@ LineUp::Application.routes.draw do
 
   root :to => "dashboards#show"
   resource :dashboard, :only => 'show'
+  resources :club_nights
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
