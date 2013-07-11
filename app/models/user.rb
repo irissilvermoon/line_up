@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   validates_presence_of :email
   validates_uniqueness_of :email
+
+  has_many :club_nights, :through => :club_night_memberships
 end
