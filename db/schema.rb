@@ -11,7 +11,63 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130629002454) do
+ActiveRecord::Schema.define(:version => 20130711221540) do
+
+  create_table "bookings", :force => true do |t|
+    t.integer  "time_slot_id"
+    t.integer  "dj_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "club_night_memberships", :force => true do |t|
+    t.integer  "club_night_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "club_nights", :force => true do |t|
+    t.string   "name"
+    t.string   "venue"
+    t.string   "genres"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.text     "notes"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "djs", :force => true do |t|
+    t.string   "name"
+    t.string   "dj_name"
+    t.string   "genres"
+    t.string   "affiliations"
+    t.string   "slot_rating"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "soundcloud"
+    t.string   "web"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.integer  "club_night_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "time_slots", :force => true do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "genres"
+    t.text     "notes"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
