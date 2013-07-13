@@ -18,7 +18,9 @@ describe ClubNightsController do
 	end
 
 	describe "#create" do
-
+    it "successfully creates a new club night" do
+    	post :create, :club_night_id => club_night.id
+    end
 	end
 
 	describe "#show" do

@@ -13,4 +13,5 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   has_many :club_nights, :through => :club_night_memberships
+  has_many :club_night_memberships
 end

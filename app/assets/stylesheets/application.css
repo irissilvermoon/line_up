@@ -16,3 +16,6 @@
  .panel {
    box-shadow: 2px 2px 2px #1e4548;
  }
+.simple_form {
+  $indent: 120px;
+
