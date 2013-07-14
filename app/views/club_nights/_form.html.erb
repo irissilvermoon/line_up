@@ -1,5 +1,4 @@
-<%= simple_form_for(@club_night) do |f| %>
-
+<%= simple_form_for(@club_night, html: {:class => 'large-4'}) do |f| %>
 	<%= f.input :name, label: "Club Night Name" %>
 	<%= f.input :venue %>
 	<%= f.input :genres %>

@@ -24,6 +24,10 @@ describe ClubNightsController do
 	end
 
 	describe "#show" do
+		it "renders show view for club night" do
+			get :show, id: Factory(:club_night)
+			response.should render_template("show")
+		end
 	end
 
 	describe "#edit" do
