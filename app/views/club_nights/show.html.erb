@@ -1,15 +1,31 @@
-<h1>New Club Night</h1>
+<h1>
+	<%="#{@club_night.name}" %>
+</h1>
 
-<b>Club Night Name:</b>
-<%= @club_night.name %>
+<div class="small-6 columns">
+   <div class="panel">
+   	<li>
+			<b>Venue:</b>
+			<%= @club_night.venue %>
+		</li>
+		<li>
+			<b>Genres:</b>
+			<%= @club_night.genres %>
+		</li>
+		<li>
+			<b>Start Time:</b>
+			<%= @club_night.start_time %>
+		</li>
+		<li>
+			<b>End Time:</b>
+			<%= @club_night.end_time %>
+		</li>
+		<ul>
+			<b>Notes:</b>
+			<%= @club_night.notes %>
+		</ul>
 
-<b>Venue:</b>
-<%= @club_night.venue %>
-
-Genres
-
-Start Time
-
-End Time
-
-Notes
+		<%= link_to "Edit", edit_club_night_path(@club_night) %>
+	</div>
+</div>
+<%= link_to "Back to Dashboard", dashboard_path %>

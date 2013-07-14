@@ -31,6 +31,10 @@ describe ClubNightsController do
 	end
 
 	describe "#edit" do
+		it "renders edit" do
+			get :edit, id: Factory(:club_night)
+			response.should render_template("edit")
+		end
 	end
 
 	describe "#destroy" do

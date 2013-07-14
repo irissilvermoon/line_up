@@ -5,6 +5,14 @@
 </div>
 
 
+<% @club_nights.each do |club_night| %>
+	<ul>
+		<%= link_to club_night.name, club_night_path(club_night) %>
+	</ul>
+<% end %>
+
+
+
 
 <%= link_to "Create New Club Night", new_club_night_path %> |
 <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
