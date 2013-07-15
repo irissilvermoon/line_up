@@ -19,7 +19,9 @@ describe ClubNightsController do
 
 	describe "#create" do
     it "successfully creates a new club night" do
-    	post :create, :club_night_id => club_night.id
+    	expect { post :create, :club_night_id => club_night.id }.to change {
+    		user.club_nights.count
+    	}.by(1)
     end
 	end
 

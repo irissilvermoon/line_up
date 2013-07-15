@@ -40,6 +40,7 @@ group :test do
   gem 'factory_girl', '2.6.4'
   gem 'email_spec', '1.2.1'
   gem 'rspec-rails', '~> 2.13.0'
+  gem 'autotest-standalone'
 end
 
 
