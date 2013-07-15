@@ -25,7 +25,8 @@
       <%= @club_night.notes %>
     </ul>
 
-    <%= link_to "Edit", edit_club_night_path(@club_night) %>
+    <%= link_to "Edit", edit_club_night_path(@club_night) %> | <%= link_to "Delete", club_night_path(@club_night), method: :delete,
+                                                                            data: { confirm: "Are you sure you want to delete #{@club_night.name}?" } %>
   </div>
 </div>
 <%= link_to "Back to Dashboard", dashboard_path %>
