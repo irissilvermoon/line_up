@@ -40,5 +40,9 @@ describe ClubNightsController do
   end
 
   describe "#destroy" do
+    it "deletes a club night" do
+      delete :destroy, id: Factory(:club_night)
+      response.should redirect_to dashboard_url
+    end
   end
 end
