@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:club_time] = "%I:%M %p"

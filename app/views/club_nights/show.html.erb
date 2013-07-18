@@ -1,32 +1,34 @@
-<h1>
-  <%="#{@club_night.name}" %>
-</h1>
+<div class="row">
+  <h1>
+    <%="#{@club_night.name}" %>
+  </h1>
 
-<div class="small-6 columns">
-   <div class="panel">
-    <li>
-      <b>Venue:</b>
-      <%= @club_night.venue %>
-    </li>
-    <li>
-      <b>Genres:</b>
-      <%= @club_night.genres %>
-    </li>
-    <li>
-      <b>Start Time:</b>
-      <%= @club_night.start_time %>
-    </li>
-    <li>
-      <b>End Time:</b>
-      <%= @club_night.end_time %>
-    </li>
-    <ul>
-      <b>Notes:</b>
-      <%= @club_night.notes %>
-    </ul>
+  <div class="small-6 columns small-offset-6 columns">
+     <div class="panel">
+      <li>
+        <b>Venue:</b>
+        <%= @club_night.venue %>
+      </li>
+      <li>
+        <b>Genres:</b>
+        <%= @club_night.genres %>
+      </li>
+      <li>
+        <b>Start Time:</b>
+        <%= @club_night.start_time.to_s(:club_time) %>
+      </li>
+      <li>
+        <b>End Time:</b>
+        <%= @club_night.end_time.to_s(:club_time) %>
+      </li>
+      <ul>
+        <b>Notes:</b>
+        <%= @club_night.notes %>
+      </ul>
 
-    <%= link_to "Edit", edit_club_night_path(@club_night) %> | <%= link_to "Delete", club_night_path(@club_night), method: :delete,
-                                                                            data: { confirm: "Are you sure you want to delete #{@club_night.name}?" } %>
+      <%= link_to "Edit", edit_club_night_path(@club_night) %> | <%= link_to "Delete", club_night_path(@club_night), method: :delete,
+                                                                              data: { confirm: "Are you sure you want to delete #{@club_night.name}?" } %>
+    </div>
   </div>
 </div>
 <%= link_to "Back to Dashboard", dashboard_path %>
