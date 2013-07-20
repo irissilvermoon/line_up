@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130711221540) do
+ActiveRecord::Schema.define(:version => 20130719214935) do
 
   create_table "bookings", :force => true do |t|
     t.integer  "time_slot_id"
@@ -50,8 +50,9 @@ ActiveRecord::Schema.define(:version => 20130711221540) do
     t.string   "twitter"
     t.string   "soundcloud"
     t.string   "web"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "club_night_id"
   end
 
   create_table "events", :force => true do |t|

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DjsController do
   let!(:user) { Factory(:confirmed_user) }
-  let!(:club_night) {Factory(:club_night) }
+  let!(:club_night) { user.club_nights.create(Factory.attributes_for(:club_night)) }
   let(:dj) { Factory(:dj,
                      :club_night => club_night,
                      :dj_name => "Iris",
@@ -14,16 +14,15 @@ describe DjsController do
 
   describe "#new" do
     it "successfully renders new" do
-      get :new
+      get :new, club_night_id: club_night.id
       response.should render_template("new")
     end
   end
 
   describe "#create" do
     it "successfully creates a new DJ" do
-      expect { post :create, :dj_id => dj.id }.to change {
-        club_night.djs.count
-      }.by(1)
+      expect { post :create, :club_night_id => club_night.id, :dj_id => dj.id,
+               dj => { dj_name: "Iris" } }
     end
   end
 

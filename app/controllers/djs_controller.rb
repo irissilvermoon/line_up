@@ -1,5 +1,11 @@
 class DjsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :find_club_night
+
+
+  def index
+
+  end
 
   def new
     @dj = @club_night.djs.build
@@ -15,5 +21,22 @@ class DjsController < ApplicationController
       flash[:alert] = "DJ profile has not been created."
       render :action => "new"
     end
+  end
+
+  def show
+    @dj = @club_night.djs.find(params[:id])
+  end
+
+  def destroy
+    @dj = @club_night.djs.find(params[:id])
+    @dj.destroy
+    flash[:notice] = "DJ has been deleted"
+    redirect_to club_night_path(@club_night)
+  end
+
+  private
+
+  def find_club_night
+    @club_night = current_user.club_nights.find(params[:club_night_id])
   end
 end
