@@ -1,0 +1,8 @@
+<h1>
+  <%= "Editing Profile for #{@dj.name}" %>
+</h1>
+
+<%= render 'form' %>
+
+<%= link_to "Update Profile", dj_club_night_path(@club_night, @dj) %> |
+<%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>

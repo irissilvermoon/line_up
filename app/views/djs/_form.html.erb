@@ -1,0 +1,14 @@
+<%= simple_form_for([@club_night, @dj], html: {:class => 'large-4'}) do |f| %>
+  <%= f.input :dj_name, label: "DJ Name" %>
+  <%= f.input :name %>
+  <%= f.input :affiliations %>
+  <%= f.input :genres %>
+  <%= f.input :email %>
+  <%= f.input :phone, as: :tel %>
+  <%= f.input :facebook %>
+  <%= f.input :soundcloud %>
+  <%= f.input :twitter %>
+  <%= f.input :web %>
+  <%= f.button :submit %>
+<% end %>
+

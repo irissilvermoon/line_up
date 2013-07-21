@@ -1,9 +1,10 @@
 class ClubNightsController < ApplicationController
 
   before_filter :authenticate_user!
+  before_filter :find_club_night, :except => [:index, :new, :create]
 
   def index
-    @club_nights = ClubNight.for(current_user).all
+    @club_nights = current_user.club_nights.all
   end
 
   def new
@@ -23,15 +24,14 @@ class ClubNightsController < ApplicationController
   end
 
   def show
-    @club_night = ClubNight.find(params[:id])
+
   end
 
   def edit
-    @club_night = ClubNight.find(params[:id])
+
   end
 
   def update
-    @club_night = ClubNight.find(params[:id])
     if @club_night.update_attributes(params[:club_night])
       flash[:notice] = "#{@club_night.name} has been updated."
       redirect_to club_night_path(@club_night)
@@ -42,9 +42,14 @@ class ClubNightsController < ApplicationController
   end
 
   def destroy
-    @club_night = ClubNight.find(params[:id])
     @club_night.destroy
     flash[:notice] = "Club night has been deleted"
     redirect_to dashboard_path
+  end
+
+  private
+
+  def find_club_night
+    @club_night = current_user.club_nights.find(params[:id])
   end
 end

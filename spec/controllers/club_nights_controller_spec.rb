@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe ClubNightsController do
   let(:user) { Factory(:confirmed_user) }
-  let(:club_night) {Factory(:club_night,
-                            :name => "DnBTuesdays",
-                            :venue => "Baltic Room") }
+  let!(:club_night) { user.club_nights.create Factory.attributes_for(:club_night,
+                                                                    :name => "DnBTuesdays",
+                                                                    :venue => "Baltic Room") }
 
   before do
     sign_in(:user, user)
@@ -19,7 +19,7 @@ describe ClubNightsController do
 
   describe "#create" do
     it "successfully creates a new club night" do
-      expect { post :create, :club_night_id => club_night.id }.to change {
+      expect { post :create, club_night: Factory.attributes_for(:club_night) }.to change {
         user.club_nights.count
       }.by(1)
     end
@@ -27,21 +27,29 @@ describe ClubNightsController do
 
   describe "#show" do
     it "renders show view for club night" do
-      get :show, id: Factory(:club_night)
+      get :show, id: club_night
       response.should render_template("show")
     end
   end
 
   describe "#edit" do
     it "renders edit" do
-      get :edit, id: Factory(:club_night)
+      get :edit, id: club_night
       response.should render_template("edit")
     end
   end
 
   describe "#destroy" do
     it "deletes a club night" do
-      delete :destroy, id: Factory(:club_night)
+      expect { delete :destroy, :id => club_night.id }.to change {
+        user.reload.club_nights.count
+      }.by(-1)
+    end
+  end
+
+  describe "#destroy-redirect" do
+    it "redirects after a club night is deleted" do
+      delete :destroy, id: club_night
       response.should redirect_to dashboard_url
     end
   end

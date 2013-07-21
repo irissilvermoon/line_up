@@ -14,9 +14,9 @@ class DjsController < ApplicationController
   def create
     @dj = @club_night.djs.create(params[:dj])
 
-    if @club_night.persisted?
+    if @dj.persisted?
       flash[:notice] = "The #{@dj.name} profile has been created."
-      redirect_to club_night_dj_path(@dj)
+      redirect_to [@club_night, @dj]
     else
       flash[:alert] = "DJ profile has not been created."
       render :action => "new"
@@ -24,6 +24,10 @@ class DjsController < ApplicationController
   end
 
   def show
+    @dj = @club_night.djs.find(params[:id])
+  end
+
+  def edit
     @dj = @club_night.djs.find(params[:id])
   end
 
