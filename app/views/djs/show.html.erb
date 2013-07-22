@@ -1,5 +1,26 @@
 <div class="row">
   <h1>
-    <%= "DJ profile for #{dj.name}" %>
+    <%= "DJ profile for #{@dj.dj_name}" %>
   </h1>
+
+  <b>DJ Name:</b>
+    <%= @dj.dj_name %>
+  <b>Name:</b>
+    <%= @dj.name %>
+  <b>Affiliations:</b>
+    <%= @dj.affiliations %>
+  <b>Genres:</b>
+    <%= @dj.genres %>
+  <b>Email:</b>
+    <%= @dj.email %>
+  <b>Phone:</b>
+    <%= @dj.phone %>
+  <b>Facebook:</b>
+  <%= link_to @dj.facebook, external_url(@dj.facebook), :target => "_blank" %>
+
+  <%= link_to "Edit #{@dj.dj_name} Profile", edit_club_night_dj_path(@dj, @club_night) %>
+
+
+
+
 

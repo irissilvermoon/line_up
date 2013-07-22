@@ -36,7 +36,7 @@ class ClubNightsController < ApplicationController
       flash[:notice] = "#{@club_night.name} has been updated."
       redirect_to club_night_path(@club_night)
     else
-      flash[:alert] = "#{club_night.name} has not been updated."
+      flash[:alert] = "#{@club_night.name} has not been updated."
       render :action => "edit"
     end
   end
