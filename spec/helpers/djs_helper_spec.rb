@@ -11,7 +11,7 @@ require 'spec_helper'
 #   end
 # end
 describe DjsHelper do
-  describe "external_link" do
+  describe "normalize_uri" do
     it "should return nil if the link is empty" do
       dj = Dj.new
       dj.facebook.should == nil
@@ -19,11 +19,6 @@ describe DjsHelper do
 
     it "should return http://www.soundcloud.com/iris1" do
       dj = Dj.new(:facebook => "http://www.soundcloud.com/iris1")
-      dj.facebook.should == "http://www.soundcloud.com/iris1"
-    end
-
-    it "should insert http:// on facebook links where missing" do
-      dj = Dj.new(:facebook => "www.soundcloud.com/iris1")
       dj.facebook.should == "http://www.soundcloud.com/iris1"
     end
 

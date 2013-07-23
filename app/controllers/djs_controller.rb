@@ -15,7 +15,7 @@ class DjsController < ApplicationController
     @dj = @club_night.djs.create(params[:dj])
 
     if @dj.persisted?
-      flash[:notice] = "The #{@dj.name} profile has been created."
+      flash[:notice] = "#{@dj.dj_name}'s profile has been created."
       redirect_to [@club_night, @dj]
     else
       flash[:alert] = "DJ profile has not been created."
@@ -34,10 +34,10 @@ class DjsController < ApplicationController
   def update
     @dj = @club_night.djs.find(params[:id])
     if @dj.update_attributes(params[:dj])
-      flash[:notice] = "#{@dj.dj_name} has been updated."
+      flash[:notice] = "#{@dj.dj_name}'s profile has been updated."
       redirect_to [@club_night, @dj]
     else
-      flash[:alert] = "#{dj.dj_name} has not been updated."
+      flash[:alert] = "Profile has not been updated."
       render :action => "edit"
     end
   end
@@ -45,7 +45,7 @@ class DjsController < ApplicationController
   def destroy
     @dj = @club_night.djs.find(params[:id])
     @dj.destroy
-    flash[:notice] = "DJ has been deleted"
+    flash[:notice] = "DJ has been deleted."
     redirect_to club_night_path(@club_night)
   end
 

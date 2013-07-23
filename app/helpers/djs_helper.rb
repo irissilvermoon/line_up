@@ -2,12 +2,12 @@ module DjsHelper
   #URI.parse
   #if URI is blank return nil
   #else return normalize! uri
-  def external_url(link)
-    if link.blank?
-      nil
+  def normalize_uri(uri)
+    return unless uri
+    if uri !~ /^http/
+      "http://#{uri}"
     else
-      uri = URI.parse(link)
-      uri.normalize!
+      uri
     end
   end
 end

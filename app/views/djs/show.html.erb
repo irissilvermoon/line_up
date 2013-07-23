@@ -3,6 +3,7 @@
     <%= "DJ profile for #{@dj.dj_name}" %>
   </h1>
 </div>
+
 <div class="row">
   <div class="small-6 columns">
     <p>
@@ -31,11 +32,11 @@
     </p>
     <p>
       <b>Facebook:</b>
-      <%= link_to @dj.facebook, external_url(@dj.facebook), :target => "_blank" %>
+      <%= link_to @dj.facebook, normalize_uri(@dj.facebook), :target => "_blank" %>
     </p>
     <p>
       <b>Soundcloud:</b>
-      <%= link_to @dj.soundcloud, external_url(@dj.soundcloud), :target => "_blank" %>
+      <%= link_to @dj.soundcloud, normalize_uri(@dj.soundcloud), :target => "_blank" %>
     </p>
     <p>
       <b>Twitter:</b>
@@ -43,8 +44,12 @@
     </p>
     <p>
       <b> Web: </b>
-      <%= link_to @dj.web, external_url(@dj.web), :target => "_blank" %>
+      <%= link_to @dj.web, normalize_uri(@dj.web), :target => "_blank" %>
     </p>
+    <p>
+      <b> Notes: </b>
+        <%= @dj.notes %>
+      </p>
   </div>
 </div>
 

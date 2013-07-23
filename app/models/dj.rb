@@ -1,7 +1,7 @@
 class Dj < ActiveRecord::Base
   attr_accessible :affiliations, :dj_name, :email,
   				  :facebook, :genres, :name, :phone,
-  				  :slot_rating, :soundcloud, :twitter, :web, :club_night_id
+  				  :slot_rating, :soundcloud, :twitter, :web, :club_night_id, :notes
 
   validates_presence_of :dj_name
 
