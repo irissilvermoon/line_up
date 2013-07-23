@@ -31,6 +31,17 @@ class DjsController < ApplicationController
     @dj = @club_night.djs.find(params[:id])
   end
 
+  def update
+    @dj = @club_night.djs.find(params[:id])
+    if @dj.update_attributes(params[:dj])
+      flash[:notice] = "#{@dj.dj_name} has been updated."
+      redirect_to [@club_night, @dj]
+    else
+      flash[:alert] = "#{dj.dj_name} has not been updated."
+      render :action => "edit"
+    end
+  end
+
   def destroy
     @dj = @club_night.djs.find(params[:id])
     @dj.destroy

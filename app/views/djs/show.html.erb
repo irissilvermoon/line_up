@@ -2,23 +2,58 @@
   <h1>
     <%= "DJ profile for #{@dj.dj_name}" %>
   </h1>
+</div>
+<div class="row">
+  <div class="small-6 columns">
+    <p>
+      <b>DJ Name:</b>
+        <%= @dj.dj_name %>
+    </p>
+    <p>
+      <b>Name:</b>
+        <%= @dj.name %>
+    </p>
+    <p>
+      <b>Affiliations:</b>
+        <%= @dj.affiliations %>
+    </p>
+    <p>
+      <b>Genres:</b>
+        <%= @dj.genres %>
+    </p>
+    <p>
+      <b>Email:</b>
+        <%= @dj.email %>
+    </p>
+    <p>
+      <b>Phone:</b>
+        <%= @dj.phone %>
+    </p>
+    <p>
+      <b>Facebook:</b>
+      <%= link_to @dj.facebook, external_url(@dj.facebook), :target => "_blank" %>
+    </p>
+    <p>
+      <b>Soundcloud:</b>
+      <%= link_to @dj.soundcloud, external_url(@dj.soundcloud), :target => "_blank" %>
+    </p>
+    <p>
+      <b>Twitter:</b>
+      <%= @dj.twitter %>
+    </p>
+    <p>
+      <b> Web: </b>
+      <%= link_to @dj.web, external_url(@dj.web), :target => "_blank" %>
+    </p>
+  </div>
+</div>
 
-  <b>DJ Name:</b>
-    <%= @dj.dj_name %>
-  <b>Name:</b>
-    <%= @dj.name %>
-  <b>Affiliations:</b>
-    <%= @dj.affiliations %>
-  <b>Genres:</b>
-    <%= @dj.genres %>
-  <b>Email:</b>
-    <%= @dj.email %>
-  <b>Phone:</b>
-    <%= @dj.phone %>
-  <b>Facebook:</b>
-  <%= link_to @dj.facebook, external_url(@dj.facebook), :target => "_blank" %>
 
-  <%= link_to "Edit #{@dj.dj_name} Profile", edit_club_night_dj_path(@dj, @club_night) %>
+
+  <%= link_to "Edit #{@dj.dj_name} Profile", edit_club_night_dj_path(@club_night, @dj) %> |
+  <%= link_to "Delete DJ Profile", club_night_dj_path(@club_night, @dj),
+                                   method: :delete, data: { confirm: "Are you sure you want to delete #{@dj.dj_name}?"} %> |
+  <%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>
 
 
 

@@ -6,5 +6,5 @@ class ClubNight < ActiveRecord::Base
   has_many :club_night_memberships
   has_many :events
 
-  validates_presence_of :name
+  validates_presence_of :name, :start_time, :end_time
 end

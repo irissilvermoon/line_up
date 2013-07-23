@@ -4,7 +4,9 @@ describe ClubNightsController do
   let(:user) { Factory(:confirmed_user) }
   let!(:club_night) { user.club_nights.create Factory.attributes_for(:club_night,
                                                                     :name => "DnBTuesdays",
-                                                                    :venue => "Baltic Room") }
+                                                                    :venue => "Baltic Room",
+                                                                    :start_time => Time.parse("21/7/2013 9:00pm"),
+                                                                    :end_time => Time.parse("22/7/2013 2:00am")) }
 
   before do
     sign_in(:user, user)
@@ -36,6 +38,15 @@ describe ClubNightsController do
     it "renders edit" do
       get :edit, id: club_night
       response.should render_template("edit")
+    end
+  end
+
+  describe "#update" do
+    it "should update a club night" do
+      put :update, id: club_night,
+      club_night: Factory.attributes_for(:club_night, :name => "DnB Wednesdays")
+      @club_night.reload
+      @club_night.name.should eq("DnB Wednesdays")
     end
   end
 

@@ -43,6 +43,15 @@ describe DjsController do
     end
   end
 
+  describe "#update" do
+    it "updates DJ profile" do
+      put :update, club_night_id: club_night.id, :id => dj.id,
+      dj: Factory.attributes_for(:dj, :dj_name => "Quadrant")
+      dj.reload
+      dj.dj_name.should eq("Quadrant")
+    end
+  end
+
   describe "#destroy" do
     it "deletes a DJ" do
       expect {
