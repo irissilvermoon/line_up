@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723184419) do
+ActiveRecord::Schema.define(:version => 20130724175120) do
 
   create_table "bookings", :force => true do |t|
     t.integer  "time_slot_id"
@@ -60,6 +60,11 @@ ActiveRecord::Schema.define(:version => 20130723184419) do
     t.integer  "club_night_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "name"
+    t.string   "location"
+    t.datetime "date"
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   create_table "time_slots", :force => true do |t|

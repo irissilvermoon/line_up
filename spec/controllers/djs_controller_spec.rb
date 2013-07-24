@@ -4,9 +4,9 @@ describe DjsController do
   let!(:user) { Factory(:confirmed_user) }
   let!(:club_night) { user.club_nights.create(Factory.attributes_for(:club_night)) }
   let!(:dj) { Factory(:dj,
-                     :club_night => club_night,
-                     :dj_name => "Iris",
-                     :name => "Karen") }
+                      :club_night => club_night,
+                      :dj_name => "Iris",
+                      :name => "Karen") }
 
   before do
     sign_in(:user, user)

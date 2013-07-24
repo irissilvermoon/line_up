@@ -10,6 +10,7 @@ LineUp::Application.routes.draw do
   resource :dashboard, :only => 'show'
   resources :club_nights do
     resources :djs
+    resources :events
   end
 
   # The priority is based upon order of creation:
