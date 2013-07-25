@@ -13,6 +13,6 @@ class TimeSlotsController < ApplicationController
   end
 
   def find_event
-    @event = @club_night.events.find(params[:id])
+    @event = @club_night.events.find(params[:event_id])
   end
 end
