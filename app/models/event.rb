@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :club_night_id, :name, :location, :date, :start_time, :end_time
+  attr_accessible :name, :location, :date, :start_time, :end_time
 
   belongs_to :club_night
 

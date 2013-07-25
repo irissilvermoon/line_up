@@ -1,5 +1,5 @@
 class DjsController < ApplicationController
-  before_filter :authenticate_user!
+
   before_filter :find_club_night
   before_filter :find_dj, :except => [:index, :new, :create]
 

@@ -1,6 +1,6 @@
 class ClubNightsController < ApplicationController
 
-  before_filter :authenticate_user!
+
   before_filter :find_club_night, :except => [:index, :new, :create]
 
   def index

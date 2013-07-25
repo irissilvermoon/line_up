@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  before_filter :authenticate_user!
+
   before_filter :find_club_night
   before_filter :find_event, :except => [:index, :new, :create]
 
