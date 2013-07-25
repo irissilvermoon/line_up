@@ -29,7 +29,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = @club_night.events.find(params[:id])
     if @event.update_attributes(params[:event])
       flash[:notice] = "Event has been updated."
       redirect_to [@club_night, @event]

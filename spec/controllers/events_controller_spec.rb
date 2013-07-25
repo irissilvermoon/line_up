@@ -21,7 +21,7 @@ describe EventsController do
   describe "#create" do
     it "successfully creates a new event" do
       expect {
-        post :create, :club_night_id => club_night.id, :event => { name: "DnB Tuesdays" }
+        post :create, :club_night_id => club_night.id, event: Factory.attributes_for(:event)
         }.to change {
           club_night.events.count
         }.by(1)
