@@ -14,7 +14,7 @@ describe TimeSlotsController do
 
   describe "#new" do
     it "successfully renders new" do
-      get :new, :club_night_id => club_night.id, :event_id => event.id
+      get :new, :club_night_id => club_night.id, :id => event.id
       response.should render_template("new")
     end
   end

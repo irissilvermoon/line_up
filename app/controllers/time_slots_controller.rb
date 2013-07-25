@@ -3,7 +3,7 @@ class TimeSlotsController < ApplicationController
   before_filter :find_event
 
   def new
-    @time_slot = @club_night.event.time_slots.build
+    @time_slot = @event.time_slots.build
   end
 
   private
@@ -13,6 +13,6 @@ class TimeSlotsController < ApplicationController
   end
 
   def find_event
-    @event = @club_night.events.find(params[:event_id])
+    @event = @club_night.events.find(params[:id])
   end
 end
