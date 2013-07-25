@@ -13,7 +13,15 @@
         </li>
       <% end %>
     </div>
-
+  <div class="row">
+    <div class="small-4 columns">
+      <% @events.each do |event| %>
+        <li>
+          <%= link_to event.name, club_night_event_path(@club_night, event) %>
+        </li>
+      <% end %>
+    </div>
+  </div>
 
     <div class="small-4 columns small-offset-6 columns">
        <div class="panel">
@@ -47,6 +55,6 @@
 </div>
 
 
-
+<%= link_to "Add an Event to #{@club_night.name}", new_club_night_event_path(@club_night) %> |
 <%= link_to "Add a DJ to #{@club_night.name}", new_club_night_dj_path(@club_night) %> |
 <%= link_to "Back to Dashboard", dashboard_path %>

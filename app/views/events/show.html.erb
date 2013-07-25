@@ -1,3 +1,34 @@
-<h1>
-  <%= "#{event.name}" %>
+<div class="row">
+  <h1>
+    <%= "#{@event.name}" %>
   </h1>
+</div>
+
+<div class="row">
+  <div class="small-6 columns">
+
+      <li>
+        <b>Event Name:</b>
+          <%= @event.name %>
+      </li>
+      <li>
+        <b>Date:</b>
+          <%= @event.date.to_s(:event_date) %>
+      </li>
+      <li>
+        <b>Start Time:</b>
+          <%= @event.start_time.to_s(:club_time) %>
+      </li>
+      <li>
+        <b>End Time:</b>
+          <%= @event.end_time.to_s(:club_time) %>
+      </li>
+
+  </div>
+</div>
+</br>
+
+<%= link_to "Edit #{@event.name}", edit_club_night_event_path(@club_night, @event) %> |
+<%= link_to "Delete Event", club_night_event_path(@club_night, @event),
+                            method: :delete, data: { confirm: "Are you sure you want to delete #{@event.name}?"} %> |
+<%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>

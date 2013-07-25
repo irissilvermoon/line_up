@@ -25,6 +25,7 @@ class ClubNightsController < ApplicationController
 
   def show
     @djs = @club_night.djs.all
+    @events = @club_night.events.all
   end
 
   def edit
