@@ -8,7 +8,7 @@ describe EventsController do
                          :name => "DnB Tuesdays") }
 
   before do
-    sign_in_as!(user)
+    sign_in(:user, user)
   end
 
   describe "#new" do
@@ -21,7 +21,7 @@ describe EventsController do
   describe "#create" do
     it "successfully creates a new event" do
       expect {
-        post :create, :club_night_id => club_night.id, :event => { name: "DnB Tuesdays"}
+        post :create, :club_night_id => club_night.id, :event => { name: "DnB Tuesdays" }
         }.to change {
           club_night.events.count
         }.by(1)
@@ -54,14 +54,17 @@ describe EventsController do
   describe "#destroy" do
     it "deletes an event" do
       expect {
-        delete :destroy, :club_night_id => club_night.id, :id => event.id}.to change{
+        delete :destroy, :club_night_id => club_night.id, :id => event.id }.to change{
           club_night.events.count
         }.by(-1)
     end
   end
 
   describe "#destroy-redirect" do
-    delete :destroy, :club_night_id => club_night.id, :id => event.id
-    response.should redirect_to club_night_url
+    it "redirects after an event is deleted" do
+      delete :destroy, club_night_id: club_night.id, :id => event.id
+      response.should redirect_to club_night_url
+    end
   end
 end
+

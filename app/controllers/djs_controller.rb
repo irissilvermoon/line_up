@@ -1,6 +1,7 @@
 class DjsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_club_night
+  before_filter :find_dj, :except => [:index, :new, :create]
 
 
   def index
@@ -24,15 +25,14 @@ class DjsController < ApplicationController
   end
 
   def show
-    @dj = @club_night.djs.find(params[:id])
+
   end
 
   def edit
-    @dj = @club_night.djs.find(params[:id])
+
   end
 
   def update
-    @dj = @club_night.djs.find(params[:id])
     if @dj.update_attributes(params[:dj])
       flash[:notice] = "#{@dj.dj_name}'s profile has been updated."
       redirect_to [@club_night, @dj]
@@ -43,7 +43,6 @@ class DjsController < ApplicationController
   end
 
   def destroy
-    @dj = @club_night.djs.find(params[:id])
     @dj.destroy
     flash[:notice] = "DJ has been deleted."
     redirect_to club_night_path(@club_night)
@@ -53,5 +52,9 @@ class DjsController < ApplicationController
 
   def find_club_night
     @club_night = current_user.club_nights.find(params[:club_night_id])
+  end
+
+  def find_dj
+    @dj = @club_night.djs.find(params[:id])
   end
 end
