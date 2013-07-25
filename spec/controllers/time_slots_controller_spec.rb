@@ -18,4 +18,47 @@ describe TimeSlotsController do
       response.should render_template("new")
     end
   end
+
+  describe "#create" do
+    it "successfully creates a new time slot" do
+      expect {
+        post :create, :club_night_id => club_night.id, :event_id => event.id,
+        time_slot: Factory.attributes_for(:time_slot) }.to change {
+          event.time_slots.count
+      }.by(1)
+    end
+  end
+
+  describe "#show" do
+    it "renders show view for time slots" do
+      get :show, :club_night_id => club_night.id, :event_id => event.id, :id => time_slot.id
+      response.should render_template("show")
+    end
+  end
+
+  describe "#edit" do
+    it "renders edit" do
+      get :edit, :club_night_id => club_night.id, :event_id => event.id, :id => time_slot.id
+      response.should render_template("edit")
+    end
+  end
+
+  describe "#update" do
+    it "updates an event" do
+      put :update, :club_night_id => club_night.id, :event_id => event.id, :id => time_slot.id,
+      :time_slot => Factory.attributes_for(:time_slot, :genres => "House")
+      time_slot.reload
+      time_slot.genres.should eq("House")
+    end
+  end
+
+  describe "#delete" do
+    it "Deletes an event" do
+      expect {
+        delete :destroy, :club_night_id => club_night.id, :event_id => event.id, :id => time_slot.id
+      }.to change {
+        event.time_slots.count
+      }.by(-1)
+    end
+  end
 end

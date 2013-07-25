@@ -1,9 +1,47 @@
 class TimeSlotsController < ApplicationController
+  before_filter :authenticate_user!
   before_filter :find_club_night
   before_filter :find_event
+  before_filter :find_time_slot, :except => [:index, :new, :create]
 
   def new
     @time_slot = @event.time_slots.build
+  end
+
+  def create
+    @time_slot = @event.time_slots.create(params[:time_slot])
+
+    if @time_slot.persisted?
+      flash[:notice] = "New time slot added."
+      redirect_to [@club_night, @event]
+    else
+      flash[:alert] = "Time slot has not been added."
+      render :action => "new"
+    end
+  end
+
+  def show
+
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @time_slot.update_attributes(params[:time_slot])
+      flash[:notice] = "Time Slot has been updated"
+      redirect_to [@club_night, @event]
+    else
+      flash[:alert] = "Time Slot has not been updated."
+      render :action => "edit"
+    end
+  end
+
+  def destroy
+    @time_slot.destroy
+    flash[:notice] = "Time slot has been removed"
+    redirect_to club_night_event_path(@club_night, @event)
   end
 
   private
@@ -14,5 +52,9 @@ class TimeSlotsController < ApplicationController
 
   def find_event
     @event = @club_night.events.find(params[:event_id])
+  end
+
+  def find_time_slot
+    @time_slot = @event.time_slots.find(params[:id])
   end
 end

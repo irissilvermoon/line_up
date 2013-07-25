@@ -5,4 +5,6 @@ class TimeSlot < ActiveRecord::Base
 
   has_many :bookings
   has_many :djs, :through => :bookings
+
+  validates_presence_of :start_time, :end_time
 end
