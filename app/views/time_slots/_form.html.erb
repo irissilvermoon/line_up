@@ -1,0 +1,6 @@
+<%= simple_form_for([@club_night, @event, @time_slot], html: {:class => 'large-4'}) do |f| %>
+  <%= f.input :genres %>
+  <%= f.input :start_time, as: :time %>
+  <%= f.input :end_time, as: :time %>
+  <%= f.button :submit %>
+<% end %>
