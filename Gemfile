@@ -8,6 +8,7 @@ gem 'rails', '3.2.13'
 gem 'sqlite3'
 gem 'jquery-rails'
 gem 'devise', '~> 2.2'
+gem 'devise_invitable', '~> 1.1.0'
 gem 'simple_form'
 
 
