@@ -8,4 +8,9 @@ class Event < ActiveRecord::Base
   has_many :djs, :through => :bookings
 
   validates_presence_of :name, :start_time, :end_time
+
+  def date=(date)
+    date = Time.parse(date)
+    self[:date] = date
+  end
 end

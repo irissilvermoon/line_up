@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'devise', '~> 2.2'
 gem 'devise_invitable', '~> 1.1.0'
 gem 'simple_form'
+gem 'american_date'
+
 
 
 # Gems used only for assets and not required
@@ -23,6 +25,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'zurb-foundation'
+  gem 'jquery-ui-rails'
 end
 
 group :test, :development do
