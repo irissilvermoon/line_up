@@ -3,9 +3,7 @@ require 'spec_helper'
 describe EventsController do
   let!(:user) { Factory(:confirmed_user) }
   let!(:club_night) { user.club_nights.create(Factory.attributes_for(:club_night)) }
-  let!(:event) { Factory(:event,
-                         :club_night => club_night,
-                         :name => "DnB Tuesdays") }
+  let!(:event) { club_night.events.create(Factory.attributes_for(:event)) }
 
   before do
     sign_in(:user, user)

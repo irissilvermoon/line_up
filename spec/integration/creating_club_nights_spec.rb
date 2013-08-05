@@ -11,6 +11,8 @@ feature 'Creating Club Nights' do
 
   scenario "It can create a new Club Night" do
     fill_in "Club Night Name", :with => "Dnb Tuesdays"
+    fill_in 'Start time', :with => "8/22/2013 9:00pm"
+    fill_in 'End time', :with => "8/22/2013 2:00am"
     click_button "Create Club night"
     page.should have_content("The club night Dnb Tuesdays has been created.")
   end

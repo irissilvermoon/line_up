@@ -2,8 +2,8 @@
   <%= f.input :name, label: "Club Night Name" %>
   <%= f.input :venue %>
   <%= f.input :genres %>
-  <%= f.input :start_time, as: :time %>
-  <%= f.input :end_time, as: :time %>
+  <%= f.input :start_time, as: :string, input_html: { value: display_time(f.object.start_time) } %>
+  <%= f.input :end_time, as: :string, input_html: { value: display_time(f.object.end_time) } %>
   <%= f.input :notes %>
   <%= f.button :submit %>
 <% end %>

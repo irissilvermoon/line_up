@@ -5,3 +5,5 @@
 jQuery ->
   $('#event_date').datepicker
     dateFormat: 'M d, yy'
+  $("#event_start_time").timepicker();
+  $("#event_end_time").timepicker();

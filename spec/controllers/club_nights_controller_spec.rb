@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe ClubNightsController do
   let(:user) { Factory(:confirmed_user) }
-  let!(:club_night) { user.club_nights.create Factory.attributes_for(:club_night,
-                                                                    :name => "DnBTuesdays",
-                                                                    :venue => "Baltic Room") }
+  let!(:club_night) { user.club_nights.create(Factory.attributes_for(:club_night)) }
 
   before do
     sign_in(:user, user)

@@ -1,0 +1,54 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'https://github.com/jonthornton/jquery-timepicker' ]
+2 info using npm@1.2.14
+3 info using node@v0.8.22
+4 verbose read json /Users/karen/Desktop/Programs/line_up/package.json
+5 verbose read json /Users/karen/Desktop/Programs/line_up/node_modules/grunt/package.json
+6 verbose read json /Users/karen/Desktop/Programs/line_up/package.json
+7 verbose cache add [ 'https://github.com/jonthornton/jquery-timepicker', null ]
+8 verbose cache add name=undefined spec="https://github.com/jonthornton/jquery-timepicker" args=["https://github.com/jonthornton/jquery-timepicker",null]
+9 verbose parsed url { protocol: 'https:',
+9 verbose parsed url   slashes: true,
+9 verbose parsed url   host: 'github.com',
+9 verbose parsed url   hostname: 'github.com',
+9 verbose parsed url   href: 'https://github.com/jonthornton/jquery-timepicker',
+9 verbose parsed url   pathname: '/jonthornton/jquery-timepicker',
+9 verbose parsed url   path: '/jonthornton/jquery-timepicker' }
+10 silly lockFile dcbb1e22-om-jonthornton-jquery-timepicker https://github.com/jonthornton/jquery-timepicker
+11 verbose lock https://github.com/jonthornton/jquery-timepicker /Users/karen/.npm/dcbb1e22-om-jonthornton-jquery-timepicker.lock
+12 verbose addRemoteTarball [ 'https://github.com/jonthornton/jquery-timepicker', null ]
+13 info retry fetch attempt 1 at 15:44:03
+14 verbose fetch to= /var/folders/8s/lcpjkspx3kv3sfrq54qb7r7r0000gn/T/npm-64435/1375397043585-0.29538822430185974/tmp.tgz
+15 http GET https://github.com/jonthornton/jquery-timepicker
+16 http 200 https://github.com/jonthornton/jquery-timepicker
+17 verbose tar unpack /var/folders/8s/lcpjkspx3kv3sfrq54qb7r7r0000gn/T/npm-64435/1375397043585-0.29538822430185974/tmp.tgz
+18 silly lockFile a270fd88-3585-0-29538822430185974-package /var/folders/8s/lcpjkspx3kv3sfrq54qb7r7r0000gn/T/npm-64435/1375397043585-0.29538822430185974/package
+19 verbose lock /var/folders/8s/lcpjkspx3kv3sfrq54qb7r7r0000gn/T/npm-64435/1375397043585-0.29538822430185974/package /Users/karen/.npm/a270fd88-3585-0-29538822430185974-package.lock
+20 silly lockFile b2ca205b-3585-0-29538822430185974-tmp-tgz /var/folders/8s/lcpjkspx3kv3sfrq54qb7r7r0000gn/T/npm-64435/1375397043585-0.29538822430185974/tmp.tgz
+21 verbose lock /var/folders/8s/lcpjkspx3kv3sfrq54qb7r7r0000gn/T/npm-64435/1375397043585-0.29538822430185974/tmp.tgz /Users/karen/.npm/b2ca205b-3585-0-29538822430185974-tmp-tgz.lock
+22 silly gunzTarPerm modes [ '755', '644' ]
+23 verbose read json /var/folders/8s/lcpjkspx3kv3sfrq54qb7r7r0000gn/T/npm-64435/1375397043585-0.29538822430185974/package/package.json
+24 error not a package /var/folders/8s/lcpjkspx3kv3sfrq54qb7r7r0000gn/T/npm-64435/1375397043585-0.29538822430185974/tmp.tgz
+25 silly lockFile a270fd88-3585-0-29538822430185974-package /var/folders/8s/lcpjkspx3kv3sfrq54qb7r7r0000gn/T/npm-64435/1375397043585-0.29538822430185974/package
+26 silly lockFile a270fd88-3585-0-29538822430185974-package /var/folders/8s/lcpjkspx3kv3sfrq54qb7r7r0000gn/T/npm-64435/1375397043585-0.29538822430185974/package
+27 silly lockFile b2ca205b-3585-0-29538822430185974-tmp-tgz /var/folders/8s/lcpjkspx3kv3sfrq54qb7r7r0000gn/T/npm-64435/1375397043585-0.29538822430185974/tmp.tgz
+28 silly lockFile b2ca205b-3585-0-29538822430185974-tmp-tgz /var/folders/8s/lcpjkspx3kv3sfrq54qb7r7r0000gn/T/npm-64435/1375397043585-0.29538822430185974/tmp.tgz
+29 silly lockFile dcbb1e22-om-jonthornton-jquery-timepicker https://github.com/jonthornton/jquery-timepicker
+30 silly lockFile dcbb1e22-om-jonthornton-jquery-timepicker https://github.com/jonthornton/jquery-timepicker
+31 error Error: ENOENT, open '/var/folders/8s/lcpjkspx3kv3sfrq54qb7r7r0000gn/T/npm-64435/1375397043585-0.29538822430185974/package/package.json'
+32 error If you need help, you may report this log at:
+32 error     <http://github.com/isaacs/npm/issues>
+32 error or email it to:
+32 error     <npm-@googlegroups.com>
+33 error System Darwin 12.4.0
+34 error command "node" "/usr/local/bin/npm" "install" "https://github.com/jonthornton/jquery-timepicker"
+35 error cwd /Users/karen/Desktop/Programs/line_up
+36 error node -v v0.8.22
+37 error npm -v 1.2.14
+38 error path /var/folders/8s/lcpjkspx3kv3sfrq54qb7r7r0000gn/T/npm-64435/1375397043585-0.29538822430185974/package/package.json
+39 error code ENOENT
+40 error errno 34
+41 verbose exit [ 34, true ]
