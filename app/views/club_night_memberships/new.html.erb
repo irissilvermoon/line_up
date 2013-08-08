@@ -1,0 +1,11 @@
+<h1>
+  <%= "Invite new collaborator to night" %>
+</h1>
+
+<%= simple_form_for(@user, :url => club_night_club_night_memberships_path) do |f| %>
+
+  <%= f.input :email %>
+
+
+  <%= f.submit %>
+<% end %>

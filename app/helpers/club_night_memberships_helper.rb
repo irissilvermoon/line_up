@@ -1,0 +1,2 @@
+module ClubNightMembershipsHelper
+end

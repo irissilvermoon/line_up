@@ -46,7 +46,7 @@
           <%= @club_night.notes %>
         </ul>
 
-
+        <%= link_to "Members", club_night_club_night_memberships_path(@club_night) %> |
         <%= link_to "Edit", edit_club_night_path(@club_night) %> | <%= link_to "Delete", club_night_path(@club_night), method: :delete,
                                                                                 data: { confirm: "Are you sure you want to delete #{@club_night.name}?" } %>
       </div>
@@ -54,7 +54,7 @@
   </div>
 </div>
 
-
+<%= link_to "Add Collaborator to night", new_club_night_club_night_membership_path(@club_night) %> |
 <%= link_to "Add an Event to #{@club_night.name}", new_club_night_event_path(@club_night) %> |
 <%= link_to "Add a DJ to #{@club_night.name}", new_club_night_dj_path(@club_night) %> |
 <%= link_to "Invite Collaborator to #{@club_night.name}", new_user_invitation_path %> |

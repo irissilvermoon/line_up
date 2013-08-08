@@ -7,8 +7,10 @@ LineUp::Application.routes.draw do
       :as => 'confirm_user'
 
   root :to => "dashboards#show"
+
   resource :dashboard, :only => 'show'
   resources :club_nights do
+    resources :club_night_memberships
     resources :djs
     resources :events do
       resources :time_slots
