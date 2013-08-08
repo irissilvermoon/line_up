@@ -28,9 +28,9 @@ class ClubNightMembershipsController < ApplicationController
   end
 
   def destroy
-    @club_night_member = @club_night.users.find(params[:id])
+    @user = @club_night.users.find(params[:id])
 
-    @club_night.users.delete(user)
+    @club_night.users.delete(@user)
     flash[:notice] = "#{@user.email} has been removed from #{@club_night.name}"
     redirect_to club_night_club_night_memberships_path
   end

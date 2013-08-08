@@ -49,16 +49,24 @@ describe ClubNightMembershipsController do
   end
 
   describe "#destroy" do
-    it "removes a user from an event" do
-      expect { delete :destroy, :club_night_id => club_night.id, :user => {:email => "example@example.com"}}.to change {
-        club_night.users.count
-      }.by(-1)
-    end
+    context "With a member of a club night" do
+      let!(:existing_user) { Factory(:confirmed_user) }
 
-    it "does not delete a user from the system" do
-      expect { delete :destroy, :club_night_id => club_night.id, :user => {:email => "example@example.com"}}.to_not change {
-        User.count
-      }
+      before do
+        club_night.users << existing_user
+      end
+
+      it "removes a user from an event" do
+        expect { delete :destroy, :club_night_id => club_night.id, :id => user.id}.to change {
+          club_night.users.count
+        }.by(-1)
+      end
+
+      it "does not delete a user from the system" do
+        expect { delete :destroy, :club_night_id => club_night.id, :id => user.id}.to_not change {
+          User.count
+        }
+      end
     end
   end
 end
