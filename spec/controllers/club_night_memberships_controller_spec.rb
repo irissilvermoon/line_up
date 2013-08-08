@@ -34,8 +34,31 @@ describe ClubNightMembershipsController do
       let!(:existing_user) { Factory(:confirmed_user) }
 
       it "should not create a user in the system" do
-
+        expect { post :create, :club_night_id => club_night.id, :user => {:email => existing_user.email} }.to_not change {
+          User.count
+        }
       end
+    end
+  end
+
+  describe "#show" do
+    it "renders the index view" do
+      get :index, :club_night_id => club_night.id
+      response.should render_template("index")
+    end
+  end
+
+  describe "#destroy" do
+    it "removes a user from an event" do
+      expect { delete :destroy, :club_night_id => club_night.id, :user => {:email => "example@example.com"}}.to change {
+        club_night.users.count
+      }.by(-1)
+    end
+
+    it "does not delete a user from the system" do
+      expect { delete :destroy, :club_night_id => club_night.id, :user => {:email => "example@example.com"}}.to_not change {
+        User.count
+      }
     end
   end
 end
