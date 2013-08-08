@@ -7,16 +7,16 @@ class ClubNightMembershipsController < ApplicationController
   end
 
   def create
-    @user = @club_night.users.where(params[:user_id])
+    @user = @club_night.users.where(:email => params[:user][:email]).first
 
     if @user
       redirect_to club_night_club_night_memberships_path, notice: "User is already part of club night"
     else
-      @user = User.invite!(params[:user], @club_night)
+      @user = User.invite!(params[:user])
 
       if @user.valid?
         @club_night.users << @user
-        redirect_to club_night_club_night_memberships_path, notice: "#User has been added to #{@club_night.name}"
+        redirect_to club_night_club_night_memberships_path, notice: "{#user.email} has been added to #{@club_night.name}"
       else
         redirect_to new_club_night_club_night_membership_path, alert: "Email can't be blank"
       end
@@ -35,4 +35,3 @@ class ClubNightMembershipsController < ApplicationController
 end
 
 
-#club_night.users club night memberships simple join table connecting club nights and users

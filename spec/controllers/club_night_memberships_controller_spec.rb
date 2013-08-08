@@ -25,7 +25,8 @@ describe ClubNightMembershipsController do
       it "should add the user to the club night" do
         post :create, :club_night_id => club_night.id, :user => { :email => "example@example.com"}
         new_user = User.where(:email => "example@example.com").first
-        new_user.should be_in @club_night.users
+        club_night.users(:force)
+        new_user.should be_in club_night.users
       end
     end
 

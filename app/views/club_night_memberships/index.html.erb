@@ -1,5 +1,12 @@
-<h1> Club Night Members </h1>
+<h1> <%= "#{@club_night.name} Members" %> </h1>
+
 
 <% @club_night_members.each do |club_night_member| %>
-  <%= club_night_member.email %>
+  <li>
+    <%= club_night_member.email %>
+  </li>
   <% end %>
+<br>
+
+<%= link_to "Add member to night", new_club_night_club_night_membership_path(@club_night) %> |
+<%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>
