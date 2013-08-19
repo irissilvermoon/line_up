@@ -53,6 +53,13 @@
     </div>
   </div>
 </div>
+<div class = "row">
+  <div id="events">
+    <% calendar do |date| %>
+      <%= date.day %>
+    <% end %>
+  </div>
+</div>
 
 <%= link_to "Add an Event to #{@club_night.name}", new_club_night_event_path(@club_night) %> |
 <%= link_to "Add a DJ to #{@club_night.name}", new_club_night_dj_path(@club_night) %> |

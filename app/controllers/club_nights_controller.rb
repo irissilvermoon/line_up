@@ -26,6 +26,7 @@ class ClubNightsController < ApplicationController
   def show
     @djs = @club_night.djs.all
     @events = @club_night.events.all
+    @events_by_date = @events.group_by(&:date)
     @users = @club_night.users.all
   end
 
