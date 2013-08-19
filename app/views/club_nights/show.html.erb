@@ -5,12 +5,6 @@
   </h1>
 </div>
 
- <div id="events">
-    <% calendar do |date| %>
-      <%= date.day %>
-    <% end %>
-  </div>
-
   <div class="row">
     <div class="small-2 columns">
       <% @djs.each do |dj| %>
@@ -19,15 +13,6 @@
         </li>
       <% end %>
     </div>
-  <div class="row">
-    <div class="small-4 columns">
-      <% @events.each do |event| %>
-        <li>
-          <%= link_to event.name, club_night_event_path(@club_night, event) %>
-        </li>
-      <% end %>
-    </div>
-  </div>
 
     <div class="small-4 columns small-offset-6 columns">
        <div class="panel">
@@ -68,6 +53,7 @@
   </h2>
   <%= calendar @date do |date| %>
     <%= date.day %>
+
     <% if @events_by_date[date] %>
     <ul>
       <% @events_by_date[date].each do |event| %>
