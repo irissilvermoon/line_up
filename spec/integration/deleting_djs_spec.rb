@@ -9,6 +9,7 @@ feature 'Creating DJs' do
     user.club_nights << @club_night
     @dj = Factory.create(:dj, :dj_name => "Iris", :club_night => @club_night)
     visit club_night_path(@club_night)
+    click_link "DJs"
     click_link "Iris"
   end
 
