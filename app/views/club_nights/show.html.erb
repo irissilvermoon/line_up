@@ -1,20 +1,12 @@
 <div class="row">
-  <div class="small-12 columns">
+  <div class="small-6 columns">
   <h1>
     <%="#{@club_night.name}" %>
   </h1>
 </div>
 
   <div class="row">
-    <div class="small-2 columns">
-      <% @djs.each do |dj| %>
-        <li>
-          <%= link_to dj.dj_name, club_night_dj_path(@club_night, dj) %>
-        </li>
-      <% end %>
-    </div>
-
-    <div class="small-4 columns small-offset-6 columns">
+    <div class="small-6 columns">
        <div class="panel">
         <li>
           <b>Venue:</b>
@@ -38,6 +30,7 @@
         </ul>
 
         <%= link_to "Members", club_night_club_night_memberships_path(@club_night) %> |
+        <%= link_to "DJs", club_night_djs_path(@club_night) %> |
         <%= link_to "Edit", edit_club_night_path(@club_night) %> | <%= link_to "Delete", club_night_path(@club_night), method: :delete,
                                                                                 data: { confirm: "Are you sure you want to delete #{@club_night.name}?" } %>
       </div>
@@ -53,7 +46,6 @@
   </h2>
   <%= calendar @date do |date| %>
     <%= date.day %>
-
     <% if @events_by_date[date] %>
     <ul>
       <% @events_by_date[date].each do |event| %>

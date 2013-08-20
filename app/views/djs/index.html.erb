@@ -1,0 +1,14 @@
+<h1><%= "Djs for #{@club_night.name}" %></h1>
+
+ <div class="row">
+  <div class="small-2 columns">
+    <% @djs.each do |dj| %>
+      <li>
+        <%= link_to dj.dj_name, club_night_dj_path(@club_night, dj) %>
+      </li>
+    <% end %>
+  </div>
+</div>
+</br>
+<%= link_to "Add DJ", new_club_night_dj_path(@club_night) %> |
+<%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>

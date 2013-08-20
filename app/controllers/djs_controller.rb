@@ -5,7 +5,7 @@ class DjsController < ApplicationController
 
 
   def index
-
+    @djs = @club_night.djs.all
   end
 
   def new
