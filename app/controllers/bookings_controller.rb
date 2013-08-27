@@ -13,20 +13,20 @@ class BookingsController < ApplicationController
 
 
   def new
-    @booking = Booking.new
+    @booking = @time_slot.bookings.build
   end
 
   private
 
-  def find_time_slot
-    @time_slot = @event.time_slots.find(params[:id])
+  def find_club_night
+    @club_night = current_user.club_nights.find(params[:time_slot_id])
   end
 
   def find_event
-    @event = @club_night.events.find(params[:event_id])
+    @event = @club_night.events.find(params[:time_slot_id])
   end
 
-  def find_club_night
-    @club_night = current_user.club_nights.find(params[:club_night_id])
+  def find_time_slot
+    @time_slot = @event.time_slots.find(params[:time_slot_id])
   end
 end

@@ -29,7 +29,6 @@ class ClubNightsController < ApplicationController
     @events_by_date = @events.group_by { |e| e.date.to_date }
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @users = @club_night.users.all
-
   end
 
   def edit
