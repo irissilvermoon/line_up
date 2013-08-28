@@ -27,7 +27,8 @@ class BookingsController < ApplicationController
   end
 
   def find_club_night
-    @club_night = @event.club_night
-    @user = current_user.club_nights.find(@club_night.id)
+    @club_night = current_user.club_nights.find(@event.club_night.id)
+
   end
 end
+
