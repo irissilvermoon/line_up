@@ -27,8 +27,7 @@ describe BookingsController do
       end
 
       it "should not render new for users not part of a club night" do
-        get :new, :time_slot_id => time_slot.id
-        response.status.should == 404
+        expect { get :new, :time_slot_id => time_slot.id }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end

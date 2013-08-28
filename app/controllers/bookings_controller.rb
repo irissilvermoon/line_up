@@ -27,14 +27,7 @@ class BookingsController < ApplicationController
   end
 
   def find_club_night
-
     @club_night = @event.club_night
-    @user = @club_night.users.where(params[:user_id])
-
-    if @user
-
-    else
-      head 404
-    end
+    @user = current_user.club_nights.find(@club_night.id)
   end
 end
