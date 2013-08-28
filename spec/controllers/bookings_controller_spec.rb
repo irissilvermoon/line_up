@@ -17,6 +17,15 @@ describe BookingsController do
       get :new, :time_slot_id => time_slot.id
       response.should render_template("new")
     end
+
+    context "with a user that is not a member of a club night" do
+      let!(:existing_user) { Factory(:confirmed_user) }
+
+      it "should not render new for users not part of a club night" do
+        get :new, :time_slot_id => time_slot.id
+        response.should_be head :not_found
+      end
+    end
   end
 
   describe "#create" do

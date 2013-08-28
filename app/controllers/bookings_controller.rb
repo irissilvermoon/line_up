@@ -7,9 +7,9 @@ class BookingsController < ApplicationController
   #head 404
   #on time slots page have "add DJ" brings you to booking page.
   before_filter :authenticate_user!
-  before_filter :find_club_night
-  before_filter :find_event
   before_filter :find_time_slot
+  before_filter :find_event
+  before_filter :find_club_night
 
 
   def new
@@ -18,15 +18,15 @@ class BookingsController < ApplicationController
 
   private
 
-  def find_club_night
-    @club_night = current_user.club_nights.find(params[:time_slot_id])
+  def find_time_slot
+    @time_slot = TimeSlot.find(params[:time_slot_id])
   end
 
   def find_event
-    @event = @club_night.events.find(params[:time_slot_id])
+    @event = @time_slot.event
   end
 
-  def find_time_slot
-    @time_slot = @event.time_slots.find(params[:time_slot_id])
+  def find_club_night
+    @club_night = @time_slot.event.club_night
   end
 end
