@@ -8,6 +8,7 @@ describe BookingsController do
                              :event => event,
                              :genres => "DnB") }
 
+
   before do
     sign_in(:user, user)
     club_night.users << user
@@ -33,7 +34,15 @@ describe BookingsController do
   end
 
   describe "#create" do
-    it "successfully adds a DJ to a time slot" do
+    context "with a Dj that exists" do
+      let!(:dj) { Factory(:dj, :dj_name => "Iris")}
+
+      before do
+        club_night.djs << dj
+      end
+      it "successfully adds a DJ to a time slot" do
+        post :create, :time_slot_id => time_slot.id, :booking => :dj_id
+      end
     end
   end
 

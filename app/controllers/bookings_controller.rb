@@ -16,6 +16,10 @@ class BookingsController < ApplicationController
     @booking = @time_slot.bookings.build
   end
 
+  def create
+
+  end
+
   private
 
   def find_time_slot
