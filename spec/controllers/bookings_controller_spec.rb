@@ -10,6 +10,7 @@ describe BookingsController do
 
   before do
     sign_in(:user, user)
+    club_night.users << user
   end
 
   describe "#new" do
@@ -21,9 +22,13 @@ describe BookingsController do
     context "with a user that is not a member of a club night" do
       let!(:existing_user) { Factory(:confirmed_user) }
 
+      before do
+        sign_in(:user, existing_user)
+      end
+
       it "should not render new for users not part of a club night" do
         get :new, :time_slot_id => time_slot.id
-        response.should_be head :not_found
+        response.status.should == 404
       end
     end
   end
