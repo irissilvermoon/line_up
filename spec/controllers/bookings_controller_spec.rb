@@ -40,8 +40,13 @@ describe BookingsController do
       before do
         club_night.djs << dj
       end
+
       it "successfully adds a DJ to a time slot" do
-        post :create, :time_slot_id => time_slot.id, :booking => :dj_id
+        expect {
+          post :create, :time_slot_id => time_slot.id, :booking => { dj_id: dj.id }
+         }.to change {
+          time_slot.bookings.count
+         }.by(1)
       end
     end
   end
