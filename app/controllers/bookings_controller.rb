@@ -29,6 +29,14 @@ class BookingsController < ApplicationController
     end
   end
 
+  def destroy
+    @booking = @time_slot.bookings.find(params[:id)
+
+    @booking.destroy
+    flash[:notice] = "#{@dj.name} has been removed from Time Slot"
+    redirect_to [@club_night, @event, @time_slot]
+  end
+
   private
 
   def find_time_slot

@@ -7,6 +7,10 @@ describe BookingsController do
   let!(:time_slot) { Factory(:time_slot,
                              :event => event,
                              :genres => "DnB") }
+  let!(:dj) { Factory(:dj,
+                      :club_night => club_night,
+                      :dj_name => "Iris",
+                      :name => "Karen") }
 
 
   before do
@@ -53,6 +57,19 @@ describe BookingsController do
 
   describe "#destroy" do
     it "removes a DJ from a time slot" do
+      expect {
+        delete :destroy, :time_slot_id => time_slot.id, :booking => { dj_id: dj.id }
+      }.to change {
+        time_slot.bookings.count
+      }.by(-1)
+    end
+
+    it "does not delete a DJ from the system" do
+      expect {
+        delete :destroy, :time_slot_id => time_slot.id, :booking => { dj_id: dj.id }
+      }.to_not change {
+        Dj.count
+      }
     end
   end
 end

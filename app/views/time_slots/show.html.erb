@@ -2,11 +2,13 @@
 
 <div class="row">
   <div class="small-6 columns">
-    <li>
-      <b> DJs </b>
+      <b> DJs: </b>
         <% @djs.each do |dj| %>
-        <%= link_to dj.dj_name, club_night_dj_path(@club_night, dj) %>
+          <li>
+            <%= link_to dj.dj_name, club_night_dj_path(@club_night, dj) %>
+          </li>
         <% end %>
+      <br>
     <li>
       <b>Genres:</b>
         <%= @time_slot.genres %>
@@ -21,6 +23,7 @@
       </li>
   </div>
 </div>
+<br>
 
 <%= link_to "Add new DJ to Time Slot", new_time_slot_booking_path(@time_slot, @booking) %> |
 <%= link_to "Back to #{@event.name}", club_night_event_path(@club_night, @event) %> |
