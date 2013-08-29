@@ -1,4 +1,4 @@
 <%= simple_form_for([@time_slot, @booking], html: {:class => 'large-4'}) do |f| %>
-  <%= f.input :dj_id, collection: @djs, label_method: :dj_name, value_method: :id prompt: "Select a DJ" %>
+  <%= f.input :dj_id, collection: @djs, label_method: :dj_name, value_method: :id, prompt: "Select a DJ" %>
   <%= f.button :submit %>
 <% end %>

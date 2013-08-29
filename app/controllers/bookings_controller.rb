@@ -13,11 +13,20 @@ class BookingsController < ApplicationController
 
 
   def new
+    @djs = @club_night.djs.all
     @booking = @time_slot.bookings.build
   end
 
   def create
+    @booking = @time_slot.bookings.create(params[:booking])
 
+    if @booking.persisted?
+      flash[:notice] = "DJ has been added to Time Slot"
+      redirect_to [@club_night, @event, @time_slot]
+    else
+      flash[:alert] = "Dj has not been added to Time Slot"
+      render :action => "new"
+    end
   end
 
   private
@@ -32,7 +41,6 @@ class BookingsController < ApplicationController
 
   def find_club_night
     @club_night = current_user.club_nights.find(@event.club_night.id)
-
   end
 end
 
