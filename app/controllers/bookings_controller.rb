@@ -18,7 +18,9 @@ class BookingsController < ApplicationController
   end
 
   def create
+
     @booking = @time_slot.bookings.create(params[:booking])
+
 
     if @booking.persisted?
       flash[:notice] = "DJ has been added to Time Slot"
@@ -33,7 +35,7 @@ class BookingsController < ApplicationController
     @booking = @time_slot.bookings.find(params[:id])
 
     @booking.destroy
-    flash[:notice] = "#{@dj.name} has been removed from Time Slot"
+    flash[:notice] = "DJ has been removed from Time Slot"
     redirect_to [@club_night, @event, @time_slot]
   end
 

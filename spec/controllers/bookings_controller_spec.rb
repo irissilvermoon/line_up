@@ -56,20 +56,27 @@ describe BookingsController do
   end
 
   describe "#destroy" do
-    it "removes a DJ from a time slot" do
-      expect {
-        delete :destroy, :time_slot_id => time_slot.id, :id => booking.id
-      }.to change {
-        time_slot.bookings.count
-      }.by(-1)
-    end
+    context "with a DJ already added to a time slot" do
+      let!(:booking) { time_slot.bookings.create(Factory.attributes_for(:booking)) }
 
-    it "does not delete a DJ from the system" do
-      expect {
-        delete :destroy, :time_slot_id => time_slot.id, :id => booking.id
-      }.to_not change {
-        Dj.count
-      }
+      before do
+        time_slot.bookings << booking
+      end
+      it "removes a DJ from a time slot" do
+        expect {
+          delete :destroy, :time_slot_id => time_slot.id, :id => booking.id
+        }.to change {
+          time_slot.bookings.count
+        }.by(-1)
+      end
+
+      it "does not delete a DJ from the system" do
+        expect {
+          delete :destroy, :time_slot_id => time_slot.id, :id => booking.id
+        }.to_not change {
+          Dj.count
+        }
+      end
     end
   end
 end
