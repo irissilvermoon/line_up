@@ -58,7 +58,7 @@ describe BookingsController do
   describe "#destroy" do
     it "removes a DJ from a time slot" do
       expect {
-        delete :destroy, :time_slot_id => time_slot.id, :booking => { dj_id: dj.id }
+        delete :destroy, :time_slot_id => time_slot.id, :id => booking.id
       }.to change {
         time_slot.bookings.count
       }.by(-1)
@@ -66,7 +66,7 @@ describe BookingsController do
 
     it "does not delete a DJ from the system" do
       expect {
-        delete :destroy, :time_slot_id => time_slot.id, :booking => { dj_id: dj.id }
+        delete :destroy, :time_slot_id => time_slot.id, :id => booking.id
       }.to_not change {
         Dj.count
       }

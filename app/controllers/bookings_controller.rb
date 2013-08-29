@@ -30,7 +30,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking = @time_slot.bookings.find(params[:id)
+    @booking = @time_slot.bookings.find(params[:id])
 
     @booking.destroy
     flash[:notice] = "#{@dj.name} has been removed from Time Slot"
