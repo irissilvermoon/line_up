@@ -26,6 +26,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'zurb-foundation'
   gem 'jquery-ui-rails'
+  gem 'chosen-rails'
 end
 
 group :test, :development do

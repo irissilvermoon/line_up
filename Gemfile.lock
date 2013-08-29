@@ -49,6 +49,12 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
+    chosen-rails (1.0.0)
+      coffee-rails (>= 3.2)
+      compass-rails (>= 1.0)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
+    chunky_png (1.2.8)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -58,6 +64,12 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     columnize (0.3.6)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
     coolline (0.4.0)
     debug_inspector (0.0.2)
     debugger (1.5.0)
@@ -86,6 +98,7 @@ GEM
     factory_girl (2.6.4)
       activesupport (>= 2.3.9)
     ffi (1.9.0)
+    fssm (0.2.10)
     grit (2.5.0)
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
@@ -239,6 +252,7 @@ DEPENDENCIES
   autotest-standalone
   better_errors
   capybara (= 1.1.2)
+  chosen-rails
   coffee-rails (~> 3.2.1)
   devise (~> 2.2)
   devise_invitable (~> 1.1.0)
