@@ -7,4 +7,8 @@ class TimeSlot < ActiveRecord::Base
   has_many :djs, :through => :bookings
 
   validates_presence_of :start_time, :end_time
+
+  def dj_ids=(ids)
+
+  end
 end
