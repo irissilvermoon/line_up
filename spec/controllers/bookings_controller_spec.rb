@@ -53,6 +53,22 @@ describe BookingsController do
          }.by(1)
       end
     end
+
+    context "with a Dj already added to a time slot" do
+      let!(:booking) { time_slot.bookings.create(Factory.attributes_for(:booking))}
+
+      before do
+        time_slot.bookings << booking
+      end
+
+      it "should not add a DJ to a time slot twice" do
+        expect {
+          post :create, :time_slot_id => time_slot.id, :booking => {dj_id: dj.id }
+        }.to_not change {
+          time_slot.bookings.count
+        }
+      end
+    end
   end
 
   describe "#destroy" do
@@ -62,6 +78,7 @@ describe BookingsController do
       before do
         time_slot.bookings << booking
       end
+
       it "removes a DJ from a time slot" do
         expect {
           delete :destroy, :time_slot_id => time_slot.id, :id => booking.id

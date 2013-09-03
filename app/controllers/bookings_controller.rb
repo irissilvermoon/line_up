@@ -18,16 +18,21 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @booking = @time_slot.bookings.where(params[:id]).first
 
-    @booking = @time_slot.bookings.create(params[:booking])
-
-
-    if @booking.persisted?
-      flash[:notice] = "DJ has been added to Time Slot"
+    if @booking
+      flash[:notice] = "DJ has already been added to time slot"
       redirect_to [@club_night, @event, @time_slot]
     else
-      flash[:alert] = "Dj has not been added to Time Slot"
-      render :action => "new"
+      @booking = @time_slot.bookings.create(params[:booking])
+
+      if @booking.persisted?
+        flash[:notice] = "DJ has been added to Time Slot"
+        redirect_to [@club_night, @event, @time_slot]
+      else
+        flash[:alert] = "Dj has not been added to Time Slot"
+        render :action => "new"
+      end
     end
   end
 
