@@ -2,14 +2,18 @@ require 'spec_helper'
 
 describe TimeSlot do
   describe "#dj_ids=" do
-    let(:club_night) { club_night.create(Factory.attributes_for(:club_night))}
+    let(:club_night) { ClubNight.create(Factory.attributes_for(:club_night))}
     let(:event) { club_night.events.create(Factory.attributes_for(:event))}
     let(:time_slot) {event.time_slots.create(Factory.attributes_for(:time_slot))}
 
 
     context "for existing djs" do
       let (:existing_djs) do
-        existing_djs = ["dj1", "dj2", "dj3"]
+        existing_dj1 = Factory.create(:dj)
+        existing_dj2 = Factory.create(:dj)
+        existing_dj3 = Factory.create(:dj)
+
+        existing_djs = [existing_dj1, existing_dj2, existing_dj3]
       end
 
       it "should add the correct number existing DJs to a time slot" do
