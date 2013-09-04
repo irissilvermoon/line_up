@@ -9,18 +9,15 @@
           </li>
         <% end %>
       <br>
-    <li>
-      <b>Genres:</b>
-        <%= @time_slot.genres %>
-    </li>
-    <li>
-      <b>Start Time </b>
-        <%= @time_slot.start_time.to_s(:club_time) %>
-    </li>
-    <li>
-      <b>End Time </b>
-        <%= @time_slot.end_time.to_s(:club_time) %>
-      </li>
+    <b>Genres:</b>
+      <%= @time_slot.genres %>
+
+    <b>Start Time </b>
+      <%= @time_slot.start_time.to_s(:club_time) %>
+
+    <b>End Time </b>
+      <%= @time_slot.end_time.to_s(:club_time) %>
+
   </div>
 </div>
 <br>

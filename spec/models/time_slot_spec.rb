@@ -25,8 +25,17 @@ describe TimeSlot do
     end
 
     context "for non-existing djs" do
+      let (:existing_djs) do
+        existing_dj1 = Factory.create(:dj)
+        existing_dj2 = Factory.create(:dj)
+        non_existing_dj = "Quadrant"
+
+        existing_djs = [exsiting_dj1, existing_dj2, non_existing_dj]
+      end
 
       it "should create and add DJ to a club night" do
+        .should be_in time_slot.djs
+        .should be_in club_night.djs
       end
 
       it "should add DJ to time slot"

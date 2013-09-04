@@ -9,6 +9,7 @@ class TimeSlot < ActiveRecord::Base
   validates_presence_of :start_time, :end_time
 
   def dj_ids=(ids)
-
+    ids = []
+    super(ids)
   end
 end
