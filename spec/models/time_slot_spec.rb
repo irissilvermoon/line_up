@@ -13,7 +13,7 @@ describe TimeSlot do
         existing_dj2 = Factory.create(:dj)
         existing_dj3 = Factory.create(:dj)
 
-        existing_djs = [existing_dj1, existing_dj2, existing_dj3]
+        [existing_dj1, existing_dj2, existing_dj3]
       end
 
       it "should add the correct number existing DJs to a time slot" do
@@ -22,23 +22,48 @@ describe TimeSlot do
             time_slot.djs.count
           }.to(3)
       end
+
+      it "should include existing DJs as part of the time slot" do
+        time_slot.dj_ids = existing_djs.map(&:id)
+        time_slot.djs.should include(existing_djs.first, existing_djs.second, existing_djs.third)
+      end
     end
 
     context "for non-existing djs" do
-      let (:existing_djs) do
-        existing_dj1 = Factory.create(:dj)
-        existing_dj2 = Factory.create(:dj)
+      let! (:djs) do
+        existing_dj1 = Factory.create(:dj, :club_night => club_night)
+        existing_dj2 = Factory.create(:dj, :club_night => club_night)
         non_existing_dj = "Quadrant"
 
-        existing_djs = [exsiting_dj1, existing_dj2, non_existing_dj]
+        [existing_dj1, existing_dj2, non_existing_dj]
       end
 
-      it "should create and add DJ to a club night" do
-        .should be_in time_slot.djs
-        .should be_in club_night.djs
+      it "should add the correct number of DJs to a club night" do
+        expect { time_slot.dj_ids = [djs.first.id, djs.second.id, djs.third]
+          }.to change {
+            club_night.djs.count
+          }.to(3)
       end
 
-      it "should add DJ to time slot"
+      it "should create a new DJ" do
+        expect { time_slot.dj_ids = [djs.first.id, djs.second.id, djs.third] }.to change {
+          Dj.count
+        }.by(1)
+      end
+
+      it "should add DJ to time slot" do
+        expect { time_slot.dj_ids = [djs.first.id, djs.second.id, djs.third]
+          }.to change {
+            time_slot.djs.count
+          }.by(3)
+        # existing_djs.should be_in time_slot.djs
+      end
+
+      it "should add a DJ with the correct name" do
+        expect { time_slot.dj_ids = [djs.third] }.to change {
+          club_night.djs.where(:dj_name => djs.third).exists?
+        }.to(true)
+      end
     end
   end
 end

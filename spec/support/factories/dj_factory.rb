@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :dj do
-    dj_name "Iris"
+    sequence (:dj_name) { |n| "Iris#{n}" }
   end
 end
