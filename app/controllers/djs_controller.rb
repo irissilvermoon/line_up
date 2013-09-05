@@ -6,6 +6,11 @@ class DjsController < ApplicationController
 
   def index
     @djs = @club_night.djs.all
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @djs }
+    end
   end
 
   def new
