@@ -59,7 +59,7 @@ describe DjsController do
 
           expect(dj_names).to include('Quadrant', 'Total Science')
         end
-        
+
         it "should not include djs that don't match the query" do
           get :index, :club_night_id => club_night.id, :format => 'json', :q => 'a'
 
@@ -71,9 +71,6 @@ describe DjsController do
 
         it "should return a sentinel if the query doesn't return any results" do
           get :index, :club_night_id => club_night.id, :format => 'json', :q => "Calyx"
-
-          pending
-
           expect(JSON.parse(response.body)).to eql([{'dj_name' => 'New DJ: Calyx', 'id' => 'Calyx'}])
         end
       end

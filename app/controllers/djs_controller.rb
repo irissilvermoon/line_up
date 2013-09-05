@@ -5,12 +5,22 @@ class DjsController < ApplicationController
 
 
   def index
-    @djs = @club_night.djs.all
+    @djs = @club_night.djs
+
+    if params[:q]
+      @djs = @djs.where('dj_name LIKE ?', "%#{params[:q]}%")
+    end
 
     respond_to do |format|
       format.html
-      format.json { render :json => @djs }
+      if format.json { render :json => @djs }
+        if @djs.empty? && params[:q]
+          @djs = [{dj_name: "New DJ: #{params[:q]}", id: "#{params[:q]}"}]
+        end
+      end
     end
+
+    #if @djs.empty? && params[:q]
   end
 
   def new
