@@ -13,13 +13,13 @@ class DjsController < ApplicationController
 
     respond_to do |format|
       format.html
-      if format.json { render :json => @djs }
+      format.json do
         if @djs.empty? && params[:q]
           @djs = [{dj_name: "New DJ: #{params[:q]}", id: "#{params[:q]}"}]
         end
+      render :json => @djs
       end
     end
-
     #if @djs.empty? && params[:q]
   end
 

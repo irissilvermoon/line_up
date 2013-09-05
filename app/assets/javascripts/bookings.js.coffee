@@ -3,4 +3,5 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  $('#booking_dj_id').chosen()
+  $('#booking_dj_id').tokenInput '/djs.json'
+    theme: 'facebook'
