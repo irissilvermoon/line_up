@@ -29,6 +29,49 @@ describe DjsController do
     end
   end
 
+  describe "#index" do
+    it "should succeed" do
+      get :index, :club_night_id => club_night.id
+      response.should be_success
+    end
+
+    context "requesting json" do
+      # Let's add a few more DJs to the list so the tests are more interesting.
+      [:quadrant, :kid_hops, :total_science].each do |name|
+        let!(name) do
+          club_night.djs.create(dj_name: name.to_s.titleize)
+        end
+      end
+
+      it "should list the djs" do
+        get :index, :club_night_id => club_night.id, :format => 'json'
+
+        response.body.should == club_night.djs.to_json
+      end
+
+      context "with a search query" do
+        it "should include the djs in the query" do
+          get :index, :club_night_id => club_night.id, :format => 'json', :q => 'a'
+
+          # This is really an array of Dj attribute hashes
+          array_of_djs = JSON.parse(response.body)
+          dj_names     = array_of_djs.map { |dj| dj['dj_name'] }
+
+          expect(dj_names).to include('Quadrant', 'Total Science')
+        end
+        
+        it "should not include djs that don't match the query" do
+          get :index, :club_night_id => club_night.id, :format => 'json', :q => 'a'
+
+          array_of_djs = JSON.parse(response.body)
+          dj_names     = array_of_djs.map { |dj| dj['dj_name'] }
+
+          expect(dj_names).to_not include('Kid Hops', 'Iris')
+        end
+      end
+    end
+  end
+
   describe "#show" do
     it "renders show view for DJ profile" do
       get :show, club_night_id: club_night.id, :id => dj.id
