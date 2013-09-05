@@ -68,6 +68,14 @@ describe DjsController do
 
           expect(dj_names).to_not include('Kid Hops', 'Iris')
         end
+
+        it "should return a sentinel if the query doesn't return any results" do
+          get :index, :club_night_id => club_night.id, :format => 'json', :q => "Calyx"
+
+          pending
+
+          expect(JSON.parse(response.body)).to eql([{'dj_name' => 'New DJ: Calyx', 'id' => 'Calyx'}])
+        end
       end
     end
   end
