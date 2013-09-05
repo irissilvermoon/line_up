@@ -5,7 +5,12 @@ class DjsController < ApplicationController
 
 
   def index
-    @djs = @club_night.djs.all
+    #if you don't have a params[:q]
+    @djs = @club_night.djs
+
+    if params[:q]
+      @djs = @djs.where('dj_name LIKE ?', "%#{params[:q]}%")
+    end
   end
 
   def new
