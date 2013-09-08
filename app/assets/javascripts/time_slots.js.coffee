@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  form = $('#new_time_slot, #edit_time_slot')
+  form = $('.time-slot-form')
 
   minTime = form.data('start-time')
   maxTime = form.data('end-time')
