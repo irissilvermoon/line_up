@@ -32,11 +32,11 @@
     </p>
     <p>
       <b>Facebook:</b>
-      <%= link_to @dj.facebook, normalize_uri(@dj.facebook), :target => "_blank" %>
+      <%= link_to @dj.facebook, normalize_uri(@dj.facebook), :target => "_blank" if @dj.facebook %>
     </p>
     <p>
       <b>Soundcloud:</b>
-      <%= link_to @dj.soundcloud, normalize_uri(@dj.soundcloud), :target => "_blank" %>
+      <%= link_to @dj.soundcloud, normalize_uri(@dj.soundcloud), :target => "_blank" if @dj.soundcloud %>
     </p>
     <p>
       <b>Twitter:</b>
@@ -44,7 +44,7 @@
     </p>
     <p>
       <b> Web: </b>
-      <%= link_to @dj.web, normalize_uri(@dj.web), :target => "_blank" %>
+      <%= link_to @dj.web, normalize_uri(@dj.web), :target => "_blank" if @dj.web %>
     </p>
     <p>
       <b> Notes: </b>

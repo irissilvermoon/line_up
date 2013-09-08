@@ -20,4 +20,4 @@ jQuery ->
   url = input.data('url')
   prePopulate = input.data('pre-populate')
 
-  input.tokenInput(url, theme: 'facebook', prePopulate: prePopulate)
+  input.tokenInput(url, theme: 'facebook', propertyToSearch: 'dj_name', prePopulate: prePopulate)
