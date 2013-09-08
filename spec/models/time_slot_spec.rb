@@ -1,12 +1,11 @@
 require 'spec_helper'
 
 describe TimeSlot do
+  let(:club_night) { ClubNight.create(Factory.attributes_for(:club_night)) }
+  let(:event)      { club_night.events.create(Factory.attributes_for(:event)) }
+  let(:time_slot)  { event.time_slots.create(Factory.attributes_for(:time_slot)) }
+
   describe "#dj_ids=" do
-    let(:club_night) { ClubNight.create(Factory.attributes_for(:club_night))}
-    let(:event) { club_night.events.create(Factory.attributes_for(:event))}
-    let(:time_slot) {event.time_slots.create(Factory.attributes_for(:time_slot))}
-
-
     context "for existing djs" do
       let (:existing_djs) do
         existing_dj1 = Factory.create(:dj)
@@ -63,6 +62,40 @@ describe TimeSlot do
         expect { time_slot.dj_ids = [djs.third] }.to change {
           club_night.djs.where(:dj_name => djs.third).exists?
         }.to(true)
+      end
+    end
+  end
+
+  describe "#dj_id_list" do
+    context "with a blank dj list" do
+      before { time_slot.stub(:dj_ids => []) }
+
+      it "should return an empty string" do
+        time_slot.dj_id_list.should == ''
+      end
+    end
+
+    context "with a non-blank dj list" do
+      before { time_slot.stub(:dj_ids => [1, 2, 3]) }
+
+      it "should return a comma separated list of ids" do
+        time_slot.dj_id_list.should == '1,2,3'
+      end
+    end
+  end
+
+  describe "#dj_id_list=" do
+    context "with a blank string" do
+      it "should set dj_ids= with an empty array" do
+        time_slot.should_receive(:dj_ids=).with([])
+        time_slot.dj_id_list = ''
+      end
+    end
+
+    context "with a non-blank string" do
+      it "should set dj_ids= with a populated array" do
+        time_slot.should_receive(:dj_ids=).with(['1', '2', '3'])
+        time_slot.dj_id_list = '1,2,3'
       end
     end
   end

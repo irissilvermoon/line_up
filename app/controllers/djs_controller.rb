@@ -17,7 +17,7 @@ class DjsController < ApplicationController
         if @djs.empty? && params[:q]
           @djs = [{dj_name: "New DJ: #{params[:q]}", id: "#{params[:q]}"}]
         end
-      render :json => @djs
+        render :json => @djs
       end
     end
     #if @djs.empty? && params[:q]

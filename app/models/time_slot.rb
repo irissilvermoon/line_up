@@ -1,5 +1,5 @@
 class TimeSlot < ActiveRecord::Base
-  attr_accessible :end_time, :genres, :notes, :start_time
+  attr_accessible :end_time, :genres, :notes, :start_time, :dj_ids, :dj_id_list
 
   belongs_to :event
 
@@ -9,6 +9,14 @@ class TimeSlot < ActiveRecord::Base
   has_many :djs, :through => :bookings
 
   validates_presence_of :start_time, :end_time
+
+  def dj_id_list
+    dj_ids.join(",")
+  end
+
+  def dj_id_list=(str)
+    self.dj_ids = str.split(',')
+  end
 
   def dj_ids=(ids)
     ids = ids.map { |id| Integer(id) rescue id }

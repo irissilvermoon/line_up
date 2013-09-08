@@ -7,6 +7,7 @@ describe TimeSlotsController do
   let!(:time_slot) { Factory(:time_slot,
                              :event => event,
                              :genres => "DnB") }
+  let!(:dj) { Factory(:dj, club_night: club_night) }
 
   before do
     sign_in(:user, user)
@@ -23,8 +24,18 @@ describe TimeSlotsController do
     it "successfully creates a new time slot" do
       expect {
         post :create, :club_night_id => club_night.id, :event_id => event.id,
-        time_slot: Factory.attributes_for(:time_slot) }.to change {
+          time_slot: Factory.attributes_for(:time_slot, dj_id_list: dj.id)
+      }.to change {
           event.time_slots.count
+      }.by(1)
+    end
+
+    it "should add a booking for the dj" do
+      expect {
+        post :create, :club_night_id => club_night.id, :event_id => event.id,
+          time_slot: Factory.attributes_for(:time_slot, dj_id_list: dj.id)
+      }.to change {
+          dj.bookings.count
       }.by(1)
     end
   end
@@ -46,7 +57,7 @@ describe TimeSlotsController do
   describe "#update" do
     it "updates an event" do
       put :update, :club_night_id => club_night.id, :event_id => event.id, :id => time_slot.id,
-      :time_slot => Factory.attributes_for(:time_slot, :genres => "House")
+      :time_slot => Factory.attributes_for(:time_slot, :genres => "House", dj_id_list: "#{dj.id}")
       time_slot.reload
       time_slot.genres.should eq("House")
     end

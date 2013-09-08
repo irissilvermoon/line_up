@@ -1,6 +1,8 @@
 <%= simple_form_for([@club_night, @event, @time_slot], html: {:class => 'large-4',
                                                               'data-start-time' => display_time(@event.start_time),
                                                               'data-end-time' => display_time(@event.end_time)}) do |f| %>
+  <%= f.input :dj_id_list, label: "DJs", input_html: { 'data-url' => club_night_djs_path(@club_night),
+                                                       'data-pre-populate' => dj_tokens(@time_slot) } %>
   <%= f.input :genres %>
   <%= f.input :start_time, as: :string, input_html: { value: display_time(f.object.start_time) } %>
   <%= f.input :end_time, as: :string, input_html: { value: display_time(f.object.end_time) } %>

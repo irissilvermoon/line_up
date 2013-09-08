@@ -13,4 +13,11 @@ jQuery ->
                                         minTime: minTime,
                                         maxTime: maxTime,
                                         showDuration: false
-                                       });
+                                       })
+
+
+  input = $('#time_slot_dj_id_list')
+  url = input.data('url')
+  prePopulate = input.data('pre-populate')
+
+  input.tokenInput(url, theme: 'facebook', prePopulate: prePopulate)
