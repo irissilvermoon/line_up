@@ -112,7 +112,7 @@ describe DjsController do
   describe "#destroy-redirect" do
     it "redirects after a dj is deleted" do
       delete :destroy, club_night_id: club_night.id, :id => dj.id
-      response.should redirect_to club_night_url
+      response.should redirect_to club_night_djs_url
     end
   end
 end

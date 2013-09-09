@@ -12,7 +12,7 @@ class ClubNightMembershipsController < ApplicationController
     if @user
       redirect_to club_night_club_night_memberships_path, notice: "User is already part of club night"
     else
-      @user = User.invite!(params[:user])
+      @user = User.invite!(params[:user], current_user)
 
       if @user.valid?
         @club_night.users << @user
