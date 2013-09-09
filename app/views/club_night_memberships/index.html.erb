@@ -12,7 +12,7 @@
     <% @club_night_members.each do |club_night_member| %>
       <tr>
       <td> <%= club_night_member.email %></td>
-      <td> <%= link_to "Remove Member", club_night_club_night_memberships_path(@club_night),
+      <td> <%= link_to "Remove Member", club_night_club_night_membership_path(@club_night, club_night_member),
                                         method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
       </tr>

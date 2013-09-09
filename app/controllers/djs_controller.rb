@@ -60,7 +60,7 @@ class DjsController < ApplicationController
   def destroy
     @dj.destroy
     flash[:notice] = "DJ has been deleted."
-    redirect_to club_night_path(@club_night)
+    redirect_to club_night_djs_path(@club_night)
   end
 
   private
