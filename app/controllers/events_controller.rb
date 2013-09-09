@@ -21,10 +21,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    @dj = @club_night.djs.where(params[:id]).first
-    @time_slot = @event.time_slots.where(params[:id]).first
     @time_slots = @event.time_slots.all
-    @djs = @time_slot.djs.all
+
   end
 
   def edit

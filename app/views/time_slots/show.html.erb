@@ -8,19 +8,25 @@
             <%= link_to dj.dj_name, club_night_dj_path(@club_night, dj) %>
           </li>
         <% end %>
-      <br>
+
+    <p>
     <b>Genres:</b>
       <%= @time_slot.genres %>
-
-    <b>Start Time </b>
+    </p>
+    <p>
+    <b>Start Time: </b>
       <%= @time_slot.start_time.to_s(:club_time) %>
-
-    <b>End Time </b>
+    <p>
+    <b>End Time: </b>
       <%= @time_slot.end_time.to_s(:club_time) %>
-
+    </p>
+    <p>
+    <b>Notes:</b>
+      <%= @time_slot.notes %>
+    </p>
   </div>
 </div>
-<br>
+</br>
 
 
 <%= link_to "Back to #{@event.name}", club_night_event_path(@club_night, @event) %> |
