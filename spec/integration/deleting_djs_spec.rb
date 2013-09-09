@@ -16,6 +16,6 @@ feature 'Creating DJs' do
   scenario 'Deleting a DJ' do
     click_link 'Delete DJ Profile'
     page.should have_content("DJ has been deleted")
-    page.current_url.should == club_night_url(@club_night)
+    page.current_url.should == club_night_djs_url(@club_night)
   end
 end

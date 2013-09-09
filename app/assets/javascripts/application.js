@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require jquery.ui.datepicker
 //= require jquery.timepicker
+//= require jquery.tokeninput
+//= require chosen-jquery
 //= require foundation
 //= require_tree .
 

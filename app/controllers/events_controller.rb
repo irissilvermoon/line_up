@@ -22,6 +22,7 @@ class EventsController < ApplicationController
 
   def show
     @time_slots = @event.time_slots.all
+
   end
 
   def edit

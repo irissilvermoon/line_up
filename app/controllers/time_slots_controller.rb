@@ -21,7 +21,7 @@ class TimeSlotsController < ApplicationController
   end
 
   def show
-
+    @djs = @time_slot.djs.all
   end
 
   def edit

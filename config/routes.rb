@@ -17,6 +17,11 @@ LineUp::Application.routes.draw do
     end
   end
 
+
+  resources :time_slots, :only => [] do
+    resources :bookings
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

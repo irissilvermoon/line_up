@@ -12,11 +12,11 @@ class ClubNightMembershipsController < ApplicationController
     if @user
       redirect_to club_night_club_night_memberships_path, notice: "User is already part of club night"
     else
-      @user = User.invite!(params[:user])
+      @user = User.invite!(params[:user], current_user)
 
       if @user.valid?
         @club_night.users << @user
-        redirect_to club_night_club_night_memberships_path, notice: "{#@user.email} has been added to #{@club_night.name}"
+        redirect_to club_night_club_night_memberships_path, notice: "#{@user.email} has been added to #{@club_night.name}"
       else
         redirect_to new_club_night_club_night_membership_path, alert: "Email can't be blank"
       end

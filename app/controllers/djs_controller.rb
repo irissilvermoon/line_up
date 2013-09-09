@@ -5,7 +5,22 @@ class DjsController < ApplicationController
 
 
   def index
-    @djs = @club_night.djs.all
+    @djs = @club_night.djs
+
+    if params[:q]
+      @djs = @djs.where('dj_name LIKE ?', "%#{params[:q]}%")
+    end
+
+    respond_to do |format|
+      format.html
+      format.json do
+        if @djs.empty? && params[:q]
+          @djs = [{dj_name: "New DJ: #{params[:q]}", id: "#{params[:q]}"}]
+        end
+        render :json => @djs
+      end
+    end
+    #if @djs.empty? && params[:q]
   end
 
   def new
@@ -45,7 +60,7 @@ class DjsController < ApplicationController
   def destroy
     @dj.destroy
     flash[:notice] = "DJ has been deleted."
-    redirect_to club_night_path(@club_night)
+    redirect_to club_night_djs_path(@club_night)
   end
 
   private
