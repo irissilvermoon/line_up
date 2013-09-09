@@ -20,6 +20,8 @@ test:
 
 production:
   adapter: postgresql
+  encoding: unicode
   database: line_up_production
   pool: 5
+  username: DJBookr
   timeout: 5000
