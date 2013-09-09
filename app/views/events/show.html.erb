@@ -24,14 +24,16 @@
 </br>
 
  <div class="row">
-    <div class="small-4 columns">
+    <div class="small- columns">
       <b>Time Slots:</b>
         <% @time_slots.each do |time_slot| %>
           <li>
             <%= link_to "#{time_slot.start_time.to_s(:club_time)} - #{time_slot.end_time.to_s(:club_time)}",
                                             club_night_event_time_slot_path(@club_night, @event, time_slot) %>
+            <%= link_to time_slot.djs, club_night_dj_path(@club_night, @dj) %>
           </li>
-        <% end %>
+         <% end %>
+
     </div>
   </div>
 </br>
