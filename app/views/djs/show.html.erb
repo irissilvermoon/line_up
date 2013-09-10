@@ -58,6 +58,7 @@
   <%= link_to "Edit #{@dj.dj_name} Profile", edit_club_night_dj_path(@club_night, @dj) %> |
   <%= link_to "Delete DJ Profile", club_night_dj_path(@club_night, @dj),
                                    method: :delete, data: { confirm: "Are you sure you want to delete #{@dj.dj_name}?"} %> |
+  <%= link_to "Back to #{@club_night.name} DJs", club_night_djs_path(@club_night) %> |
   <%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>
 
 
