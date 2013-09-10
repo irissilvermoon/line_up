@@ -38,6 +38,11 @@ describe ClubNightMembershipsController do
           User.count
         }
       end
+
+      it "should not raise an error when inviting a user" do
+        expect { post :create, :club_night_id => club_night.id, :user => {:email => existing_user.email} }.to_not raise_error
+      end
+
     end
   end
 

@@ -10,6 +10,8 @@ gem 'devise', '~> 2.2'
 gem 'devise_invitable', '~> 1.1.0'
 gem 'simple_form'
 gem 'american_date'
+gem 'pg'
+
 
 
 
@@ -49,7 +51,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
 end
 
 

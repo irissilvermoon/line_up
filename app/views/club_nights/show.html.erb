@@ -56,8 +56,6 @@
   <% end %>
 </div>
 
-
 <%= link_to "Add an Event to #{@club_night.name}", new_club_night_event_path(@club_night) %> |
 <%= link_to "Add a DJ to #{@club_night.name}", new_club_night_dj_path(@club_night) %> |
-<%= link_to "Invite Collaborator to #{@club_night.name}", new_user_invitation_path %> |
 <%= link_to "Back to Dashboard", dashboard_path %>
