@@ -22,7 +22,10 @@ LineUp::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'djbookr.herokuapp.com' }
 
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :stmp
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
