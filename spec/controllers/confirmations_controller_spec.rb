@@ -19,4 +19,16 @@ describe ConfirmationsController do
       time_slot.reload.confirmed_by.should == user
     end
   end
+
+  describe "#destroy" do
+    before do
+      time_slot.confirmed_by = user
+      time_slot.save
+    end
+
+    it "should allow users to undo confirmations" do
+      delete :destroy, :time_slot_id => time_slot.id
+      time_slot.reload.confirmed_by.should == nil
+    end
+  end
 end
