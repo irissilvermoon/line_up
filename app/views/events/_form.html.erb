@@ -3,5 +3,6 @@
   <%= f.input :date, as: :string, input_html: { value: display_date(f.object.date) }%>
   <%= f.input :start_time, as: :string, input_html: { value: display_time(f.object.start_time) } %>
   <%= f.input :end_time, as: :string, input_html: { value: display_time(f.object.end_time) } %>
+  <%= f.input :notes %>
   <%= f.button :submit %>
 <% end %>
