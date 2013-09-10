@@ -9,7 +9,7 @@ class TimeSlotsController < ApplicationController
   end
 
   def create
-    @time_slot = @event.time_slots.create(params[:time_slot])
+    @time_slot = @event.time_slots.where(:event_id => @event.id).create(params[:time_slot])
 
     if @time_slot.persisted?
       flash[:notice] = "New time slot added."
