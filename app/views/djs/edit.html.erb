@@ -5,4 +5,5 @@
 <%= render 'form' %>
 
 <%= link_to "Update Profile", club_night_dj_path(@club_night, @dj) %> |
+<%= link_to "Back to #{@club_night.name} DJs", club_night_djs_path(@club_night) %> |
 <%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>
