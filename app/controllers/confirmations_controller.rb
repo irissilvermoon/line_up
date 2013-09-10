@@ -15,15 +15,3 @@ end
 
 
 
-
-  def find_time_slot
-    @time_slot = TimeSlot.find(params[:time_slot_id])
-  end
-
-  def find_event
-    @event = @time_slot.event
-  end
-
-  def find_club_night
-    @club_night = current_user.club_nights.find(@event.club_night.id)
-  end
