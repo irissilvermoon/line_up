@@ -38,6 +38,16 @@ describe TimeSlotsController do
           dj.bookings.count
       }.by(1)
     end
+
+    context "adding a new dj" do
+      let(:time_slot_attrs) do
+        attrs = Factory.attributes_for(:time_slot, dj_id_list: "New Rad DJ")
+      end
+
+      it "should not error" do
+        expect { post :create, :club_night_id => club_night.id, :event_id => event.id, :time_slot => time_slot_attrs }.to_not raise_error
+      end
+    end
   end
 
   describe "#show" do
