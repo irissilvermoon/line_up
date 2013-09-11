@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   has_many :bookings, :through => :time_slots
   has_many :djs, :through => :bookings
 
-  validates_presence_of :name, :start_time, :end_time
+  validates_presence_of :name, :start_time, :end_time, :date
 
   def date=(date)
     date = Time.parse(date)
