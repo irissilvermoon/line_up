@@ -90,16 +90,16 @@ $global-radius: 3px;
 
 // Media Queries
 
-// $small-screen: 768px;
-// $medium-screen: 1280px;
-// $large-screen: 1440px;
+$small-screen: 768px;
+$medium-screen: 1280px;
+$large-screen: 1440px;
 
-// $screen: "only screen";
-// $small: "only screen and (min-width: #{$small-screen})";
-// $medium: "only screen and (min-width: #{$medium-screen})";
-// $large: "only screen and (min-width: #{$large-screen})";
-// $landscape: "only screen and (orientation: landscape)";
-// $portrait: "only screen and (orientation: portrait)";
+$screen: "only screen";
+$small: "only screen and (min-width: #{$small-screen})";
+$medium: "only screen and (min-width: #{$medium-screen})";
+$large: "only screen and (min-width: #{$large-screen})";
+$landscape: "only screen and (orientation: landscape)";
+$portrait: "only screen and (orientation: portrait)";
 
 //// Cursors
 
@@ -115,7 +115,7 @@ $global-radius: 3px;
 //
 
 // $row-width: emCalc(1000px);
-$column-gutter: emCalc(60px);
+$column-gutter: emCalc(100px);
 // $total-columns: 12;
 
 //

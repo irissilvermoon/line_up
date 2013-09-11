@@ -1,3 +1,25 @@
+$(document).ready(function() {
+  var form = $('.time-slot-form');
+
+  var minTime = form.data('start-time');
+  var maxTime = form.data('end-time');
+
+  $("#time_slot_start_time, #time_slot_end_time").timepicker({
+                                        step: 15,
+                                        minTime: minTime,
+                                        maxTime: maxTime,
+                                        showDuration: false
+                                       });
+
+
+  var input = $('#time_slot_dj_id_list');
+  var url = input.data('url');
+  var prePopulate = input.data('pre-populate');
+
+  input.tokenInput(url, { theme: 'facebook', propertyToSearch: 'dj_name', prePopulate: prePopulate });
+});
+
+
 //confirmed checkbox code
 
 $(document).ready(function() {
