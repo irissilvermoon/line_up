@@ -8,30 +8,32 @@
             <%= link_to dj.dj_name, club_night_dj_path(@club_night, dj) %>
           </li>
         <% end %>
-
-    <p>
-    <b>Genres:</b>
-      <%= @time_slot.genres %>
-    </p>
-    <p>
-    <b>Start Time: </b>
-      <%= @time_slot.start_time.to_s(:club_time) %>
-    <p>
-    <b>End Time: </b>
-      <%= @time_slot.end_time.to_s(:club_time) %>
-    </p>
-    <p>
-    <b>Notes:</b>
-      <%= @time_slot.notes %>
+      <p>
+      <b>Genres:</b>
+        <%= @time_slot.genres %>
+      </p>
+      <p>
+      <b>Start Time: </b>
+        <%= @time_slot.start_time.to_s(:club_time) %>
+      <p>
+      <b>End Time: </b>
+        <%= @time_slot.end_time.to_s(:club_time) %>
+      </p>
+      <p>
+      <b>Notes:</b>
+        <%= @time_slot.notes %>
     </p>
   </div>
 </div>
 </br>
 
-
-<%= link_to "Back to #{@event.name}", club_night_event_path(@club_night, @event) %> |
-<%= link_to "Edit Time Slot", edit_club_night_event_time_slot_path(@club_night, @event, @time_slot) %> |
-<%= link_to "Delete Time Slot", club_night_event_time_slot_path(@club_night, @event, @time_slot),
-                                method: :delete, data: { confirm: "Are you sure you want to delete time slot?"} %>
+<div class="row">
+  <div class="small-9 columns">
+    <%= link_to "Back to #{@event.name}", club_night_event_path(@club_night, @event) %> |
+    <%= link_to "Edit Time Slot", edit_club_night_event_time_slot_path(@club_night, @event, @time_slot) %> |
+    <%= link_to "Delete Time Slot", club_night_event_time_slot_path(@club_night, @event, @time_slot),
+                                    method: :delete, data: { confirm: "Are you sure you want to delete time slot?"} %>
+  </div>
+</div>
 
 

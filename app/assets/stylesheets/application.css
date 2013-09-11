@@ -16,12 +16,13 @@
  *= require_tree .
  */
 
- .panel {
+.panel {
    box-shadow: 2px 2px 2px #1e4548;
-
  }
 
 select.time {
 	width: auto;
 }
+
+
 

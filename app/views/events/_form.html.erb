@@ -1,4 +1,4 @@
-<%= simple_form_for([@club_night, @event], html: {:class => 'large-4'}) do |f| %>
+<%= simple_form_for([@club_night, @event], html: {:class => 'small-4'}) do |f| %>
   <%= f.input :name, label: "Event Name" %>
   <%= f.input :date, as: :string, input_html: { value: display_date(f.object.date) }%>
   <%= f.input :start_time, as: :string, input_html: { value: display_time(f.object.start_time) } %>

@@ -1,25 +1,31 @@
-<h1> <%= "#{@club_night.name} Members" %> </h1>
-
-<table>
-  <thead>
-    <tr>
-      <th width="250">Email</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <% @club_night_members.each do |club_night_member| %>
-      <tr>
-      <td> <%= club_night_member.email %></td>
-      <td> <%= link_to "Remove Member", club_night_club_night_membership_path(@club_night, club_night_member),
-                                        method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
-      </tr>
-    </tr>
-  </tbody>
-</table>
+<div class="row">
+  <div class="small-8 columns">
+    <h1> <%= "#{@club_night.name} Members" %> </h1>
+    <table>
+      <thead>
+        <tr>
+          <th width="250">Email</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <% @club_night_members.each do |club_night_member| %>
+          <tr>
+          <td> <%= club_night_member.email %></td>
+          <td> <%= link_to "Remove Member", club_night_club_night_membership_path(@club_night, club_night_member),
+                                            method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+          </tr>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 <br>
-
-<%= link_to "Add member to night", new_club_night_club_night_membership_path(@club_night) %> |
-<%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>
+<div class="row">
+  <div class="small-9 columns">
+    <%= link_to "Add member to night", new_club_night_club_night_membership_path(@club_night) %> |
+    <%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>
+  </div>
+</div>
