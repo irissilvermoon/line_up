@@ -36,9 +36,7 @@
           <li>
             <%= link_to "#{time_slot.start_time.to_s(:club_time)} - #{time_slot.end_time.to_s(:club_time)}",
                                             club_night_event_time_slot_path(@club_night, @event, time_slot) %>
-            (<% time_slot.djs.map do |dj| %>
-              <%= link_to dj.dj_name, club_night_dj_path(@club_night, dj) %>,
-            <% end %>)
+            (<%= time_slot.djs.map { |dj| link_to dj.dj_name, club_night_dj_path(@club_night, dj) }.join(", ").html_safe %>)
             <label for="checkbox">
               <%= check_box_tag :confirmed, 0, time_slot.confirmed_by, :class => "custom_checkbox",
                                 "data-url" => time_slot_confirmation_path(time_slot), "data-email" => current_user.email %>
