@@ -10,18 +10,19 @@ feature 'inviting users' do
                                               :end_time => Time.parse("8/22/2013 2:00am"))
     user.club_nights << @club_night
     visit club_night_path(@club_night)
-    click_link "Invite Collaborator to DnB Tuesdays"
+    click_link "Members"
+    click_link "Add member to night"
   end
 
   scenario 'inviting a user to join DJBookr' do
     fill_in "Email", :with => "new_user@djbookr.com"
-    click_button "Send an invitation"
-    page.should have_content("An invitation email has been sent to new_user@djbookr.com")
+    click_button "Create User"
+    page.should have_content("new_user@djbookr.com has been added to DnB Tuesdays")
   end
 
   scenario 'User can sign up via invite' do
     fill_in "Email", :with => "new_user@djbookr.com"
-    click_button "Send an invitation"
+    click_button "Create User"
     visit dashboard_path
     click_link "Sign out"
     open_email "new_user@djbookr.com", :with_subject => "Invitation to Collaborate on DJBookr"

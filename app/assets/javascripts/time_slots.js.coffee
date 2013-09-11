@@ -21,3 +21,6 @@ jQuery ->
   prePopulate = input.data('pre-populate')
 
   input.tokenInput(url, theme: 'facebook', propertyToSearch: 'dj_name', prePopulate: prePopulate)
+
+
+

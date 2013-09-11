@@ -21,8 +21,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @time_slots = @event.time_slots.all
-
+    @time_slots = @event.time_slots.order('start_time ASC')
   end
 
   def edit
