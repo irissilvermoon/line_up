@@ -25,7 +25,9 @@
 <br>
 <div class="row">
   <div class="small-9 columns">
-    <%= link_to "Add member to night", new_club_night_club_night_membership_path(@club_night) %> |
-    <%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>
+    <div class="membership-modal">
+      <%= link_to "Add member to night", new_club_night_club_night_membership_path(@club_night), :id => "new-member-link" %>
+    </div>
+    | <%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>
   </div>
 </div>

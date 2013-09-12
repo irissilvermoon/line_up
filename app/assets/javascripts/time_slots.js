@@ -1,3 +1,5 @@
+
+//time slot time picker
 $(document).ready(function() {
   var form = $('.time-slot-form');
 
@@ -11,7 +13,7 @@ $(document).ready(function() {
                                         showDuration: false
                                        });
 
-
+//tokenInput DJ picker
   var input = $('#time_slot_dj_id_list');
   var url = input.data('url');
   var prePopulate = input.data('pre-populate');
