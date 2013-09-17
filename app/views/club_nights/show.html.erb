@@ -38,7 +38,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="small-12 columns"
+  <div class="small-12 columns">
     <div id="events">
       <h2 id="month">
         <%= link_to "<", date: @date.prev_month %>
@@ -50,7 +50,9 @@
         <% if @events_by_date[date] %>
         <ul>
           <% @events_by_date[date].each do |event| %>
-            <li><%= link_to event.name, club_night_event_path(@club_night, event) %></li>
+            <li>
+              <%= link_to event.name, club_night_event_path(@club_night, event), 'data-reveal-ajax' => true, 'data-reveal-id' => 'club-night-modal' %>
+            </li>
           <% end %>
         </ul>
         <% end %>
@@ -65,3 +67,8 @@
     <%= link_to "Back to Dashboard", dashboard_path %>
   </div>
 </div>
+
+<% content_for :modals do %>
+  <div id="club-night-modal" class="reveal-modal">
+  </div>
+<% end %>
