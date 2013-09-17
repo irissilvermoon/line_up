@@ -17,6 +17,7 @@
 //= require jquery.tokeninput
 //= require chosen-jquery
 //= require foundation
+//= require foundation/foundation.reveal
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

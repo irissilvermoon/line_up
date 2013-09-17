@@ -25,9 +25,15 @@
 <br>
 <div class="row">
   <div class="small-9 columns">
-    <div class="membership-modal">
-      <%= link_to "Add member to night", new_club_night_club_night_membership_path(@club_night), :id => "new-member-link" %>
+      <div class="membership-modal">
+      <%= link_to "Add member to night", new_club_night_club_night_membership_path(@club_night), 'data-reveal-ajax' => true, :id => "new-member-link", 'data-reveal-id' => 'new-member-modal' %>
     </div>
     | <%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>
   </div>
 </div>
+
+<% content_for :modals do %>
+  <div id="new-member-modal" class="reveal-modal">
+  </div>
+<% end %>
+

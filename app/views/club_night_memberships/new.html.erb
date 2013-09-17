@@ -5,13 +5,14 @@
     </h1>
   </div>
 </div>
+<div class="">
+  <%= simple_form_for(@user, :url => club_night_club_night_memberships_path, :html => {:method => :post, :class => 'small-4'}) do |f| %>
 
-<%= simple_form_for(@user, :url => club_night_club_night_memberships_path, :html => {:method => :post, :class => 'small-4'}) do |f| %>
+    <%= f.input :email %>
+    <%= f.button :submit %>
+  <% end %>
 
-  <%= f.input :email %>
-  <%= f.button :submit %>
-<% end %>
-
-<%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>
+  <%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>
+</div>
 
 
