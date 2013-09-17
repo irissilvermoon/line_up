@@ -25,7 +25,7 @@ $(document).ready(function() {
 //confirmed checkbox code
 
 $(document).ready(function() {
-  $('.custom_checkbox').on('click', function(event) {
+  $('body').on('click', '.confirm-checkbox', function(event) {
     var checkbox = $(event.target);
     var url = checkbox.data('url');
     var email = checkbox.data('email');
