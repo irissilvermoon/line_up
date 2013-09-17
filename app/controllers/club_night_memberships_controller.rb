@@ -2,14 +2,6 @@ class ClubNightMembershipsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_club_night
 
- layout->(controller) {
-  if controller.request.xhr?
-    nil
-  else
-    'application'
-  end
-}
-
   def new
     @user = User.new
   end
