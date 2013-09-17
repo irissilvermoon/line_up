@@ -12,7 +12,7 @@
         <tr>
           <% @djs.each do |dj| %>
             <tr>
-            <td><%= link_to dj.dj_name, club_night_dj_path(@club_night, dj) %></td>
+            <td><%= link_to dj.dj_name, club_night_dj_path(@club_night, dj), 'data-reveal-ajax' => true, 'data-reveal-id' => 'dj-modal' %></td>
             <td><%= link_to "Delete DJ", club_night_dj_path(@club_night, dj),
                                         method: :delete, data: { confirm: 'Are you sure?' }%></td>
           <% end %>
@@ -24,8 +24,14 @@
 
 <div class="row">
   <div class="small-4 columns">
-    <%= link_to "Add DJ", new_club_night_dj_path(@club_night) %> |
+    <%= link_to "Add DJ", new_club_night_dj_path(@club_night), 'data-reveal-ajax' => true, 'data-reveal-id' => 'new-dj-modal' %> |
     <%= link_to "Back to #{@club_night.name}", club_night_path(@club_night) %>
   </div>
 </div>
 
+<% content_for :modals do %>
+  <div id="dj-modal" class="reveal-modal">
+  </div>
+  <div id="new-dj-modal" class='reveal-modal'>
+  </div>
+<% end %>
