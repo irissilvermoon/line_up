@@ -1,5 +1,4 @@
 class TimeSlot < ActiveRecord::Base
-  attr_accessible :end_time, :genres, :notes, :start_time, :dj_ids, :dj_id_list
 
   belongs_to :event
   belongs_to :confirmed_by, :class_name => 'User'

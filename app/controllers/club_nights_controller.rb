@@ -12,7 +12,7 @@ class ClubNightsController < ApplicationController
   end
 
   def create
-    @club_night = current_user.club_nights.create(params[:club_night])
+    @club_night = current_user.club_nights.create(club_night_params)
 
     if @club_night.persisted?
       flash[:notice] = "The club night #{@club_night.name} has been created."
@@ -36,7 +36,7 @@ class ClubNightsController < ApplicationController
   end
 
   def update
-    if @club_night.update_attributes(params[:club_night])
+    if @club_night.update_attributes(club_night_params)
       flash[:notice] = "#{@club_night.name} has been updated."
       redirect_to club_night_path(@club_night)
     else
@@ -52,6 +52,10 @@ class ClubNightsController < ApplicationController
   end
 
   private
+
+  def club_night_params
+    params.require(:club_night).permit(:end_time, :genres, :name, :notes, :start_time, :venue)
+  end
 
   def find_club_night
     @club_night = current_user.club_nights.find(params[:id])

@@ -9,7 +9,7 @@ class TimeSlotsController < ApplicationController
   end
 
   def create
-    @time_slot = @event.time_slots.where(:event_id => @event.id).create(params[:time_slot])
+    @time_slot = @event.time_slots.where(:event_id => @event.id).create(time_slot_params)
 
     if @time_slot.persisted?
       flash[:notice] = "New time slot added."
@@ -29,7 +29,7 @@ class TimeSlotsController < ApplicationController
   end
 
   def update
-    if @time_slot.update_attributes(params[:time_slot])
+    if @time_slot.update_attributes(time_slot_params)
       flash[:notice] = "Time Slot has been updated"
       redirect_to [@club_night, @event]
     else
@@ -45,6 +45,10 @@ class TimeSlotsController < ApplicationController
   end
 
   private
+
+  def time_slot_params
+    params.require(:time_slot).permit(:end_time, :genres, :notes, :start_time, :dj_ids, :dj_id_list)
+  end
 
   def find_club_night
     @club_night = current_user.club_nights.find(params[:club_night_id])

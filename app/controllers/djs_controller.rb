@@ -28,7 +28,7 @@ class DjsController < ApplicationController
   end
 
   def create
-    @dj = @club_night.djs.create(params[:dj])
+    @dj = @club_night.djs.create(dj_params)
 
     if @dj.persisted?
       flash[:notice] = "#{@dj.dj_name}'s profile has been created."
@@ -48,7 +48,7 @@ class DjsController < ApplicationController
   end
 
   def update
-    if @dj.update_attributes(params[:dj])
+    if @dj.update_attributes(dj_params)
       flash[:notice] = "#{@dj.dj_name}'s profile has been updated."
       redirect_to [@club_night, @dj]
     else
@@ -64,6 +64,12 @@ class DjsController < ApplicationController
   end
 
   private
+
+  def dj_params
+    params.require(:dj).permit(:affiliations, :dj_name, :email,
+            :facebook, :genres, :name, :phone,
+            :slot_rating, :soundcloud, :twitter, :web, :notes)
+  end
 
   def find_club_night
     @club_night = current_user.club_nights.find(params[:club_night_id])

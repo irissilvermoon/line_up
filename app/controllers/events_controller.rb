@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = @club_night.events.create(params[:event])
+    @event = @club_night.events.create(event_params)
 
     if @event.persisted?
       flash[:notice] = "New event has been created."
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    if @event.update_attributes(params[:event])
+    if @event.update_attributes(event_params)
       flash[:notice] = "Event has been updated."
       redirect_to [@club_night, @event]
     else
@@ -45,6 +45,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def event_params
+    params.require(:event).permit(:name, :location, :date, :start_time, :end_time, :notes)
+  end
 
   def find_club_night
     @club_night = current_user.club_nights.find(params[:club_night_id])
