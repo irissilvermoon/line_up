@@ -2,7 +2,7 @@
 
 <p> <%= "#{@resource.invited_by.email}" %> has invited you to to collaborate on DJBookr, the app that helps promoters organize their club nights. You can accept it through the link below.</p>
 
-<p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
+<p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @token) %></p>
 
 <p>If you don't want to accept the invitation, please ignore this email.<br />
 Your account won't be created until you access the link above and set your password.</p>
