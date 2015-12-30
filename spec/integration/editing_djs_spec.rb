@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 feature 'Creating DJs' do
-  let!(:user) { Factory(:confirmed_user) }
+  let!(:user) { FactoryGirl.create(:confirmed_user) }
 
   before do
     sign_in_as!(user)
-    @club_night = Factory.create(:club_night, :name => "DnB Tuesdays")
+    @club_night = FactoryGirl.create(:club_night, :name => "DnB Tuesdays")
     user.club_nights << @club_night
-    @dj = Factory.create(:dj, :dj_name => "Iris", :club_night => @club_night)
+    @dj = FactoryGirl.create(:dj, :dj_name => "Iris", :club_night => @club_night)
     visit club_night_path(@club_night)
     click_link "DJs"
     click_link "Iris"

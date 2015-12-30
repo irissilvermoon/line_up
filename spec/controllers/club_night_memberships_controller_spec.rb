@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe ClubNightMembershipsController do
-  let!(:user) { Factory(:confirmed_user) }
-  let!(:club_night) { user.club_nights.create(Factory.attributes_for(:club_night)) }
+  let!(:user) { FactoryGirl.create(:confirmed_user) }
+  let!(:club_night) { user.club_nights.create(FactoryGirl.attributes_for(:club_night)) }
 
   before do
     sign_in(:user, user)
@@ -31,7 +31,7 @@ describe ClubNightMembershipsController do
     end
 
     context 'With a user that does exist' do
-      let!(:existing_user) { Factory(:confirmed_user) }
+      let!(:existing_user) { FactoryGirl.create(:confirmed_user) }
 
       it "should not create a user in the system" do
         expect { post :create, :club_night_id => club_night.id, :user => {:email => existing_user.email} }.to_not change {
@@ -55,7 +55,7 @@ describe ClubNightMembershipsController do
 
   describe "#destroy" do
     context "With a member of a club night" do
-      let!(:existing_user) { Factory(:confirmed_user) }
+      let!(:existing_user) { FactoryGirl.create(:confirmed_user) }
 
       before do
         club_night.users << existing_user

@@ -11,21 +11,18 @@ gem 'devise_invitable'
 gem 'simple_form'
 gem 'american_date'
 gem 'pg'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'compass-rails', '~> 2.0.alpha.0'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', :platforms => :ruby
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+gem 'uglifier'
+gem 'zurb-foundation'
+gem 'jquery-ui-rails'
+gem 'chosen-rails'
 
-  gem 'uglifier'
-  gem 'zurb-foundation'
-  gem 'jquery-ui-rails'
-  gem 'chosen-rails'
-end
 
 group :test, :development do
   gem 'rspec-rails'

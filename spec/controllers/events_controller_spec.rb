@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe EventsController do
-  let!(:user) { Factory(:confirmed_user) }
-  let!(:club_night) { user.club_nights.create(Factory.attributes_for(:club_night)) }
-  let!(:event) { club_night.events.create(Factory.attributes_for(:event)) }
+  let!(:user) { FactoryGirl.create(:confirmed_user) }
+  let!(:club_night) { user.club_nights.create(FactoryGirl.attributes_for(:club_night)) }
+  let!(:event) { club_night.events.create(FactoryGirl.attributes_for(:event)) }
 
   before do
     sign_in(:user, user)
@@ -19,7 +19,7 @@ describe EventsController do
   describe "#create" do
     it "successfully creates a new event" do
       expect {
-        post :create, :club_night_id => club_night.id, event: Factory.attributes_for(:event)
+        post :create, :club_night_id => club_night.id, event: FactoryGirl.attributes_for(:event)
         }.to change {
           club_night.events.count
         }.by(1)
@@ -43,7 +43,7 @@ describe EventsController do
   describe "#update" do
     it "updates an event" do
       put :update, :club_night_id => club_night.id, :id => event.id,
-      :event => Factory.attributes_for(:event, :name => "DnB Wednesdays")
+      :event => FactoryGirl.attributes_for(:event, :name => "DnB Wednesdays")
       event.reload
       event.name.should eq("DnB Wednesdays")
     end

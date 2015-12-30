@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe ConfirmationsController do
-  let!(:user) { Factory(:confirmed_user) }
-  let!(:club_night) { user.club_nights.create(Factory.attributes_for(:club_night)) }
-  let!(:event) { club_night.events.create(Factory.attributes_for(:event)) }
-  let!(:time_slot) { Factory(:time_slot,
+  let!(:user) { FactoryGirl.create(:confirmed_user) }
+  let!(:club_night) { user.club_nights.create(FactoryGirl.attributes_for(:club_night)) }
+  let!(:event) { club_night.events.create(FactoryGirl.attributes_for(:event)) }
+  let!(:time_slot) { FactoryGirl.create(:time_slot,
                              :event => event,
                              :genres => "DnB") }
-  let!(:dj) { Factory(:dj, club_night: club_night) }
+  let!(:dj) { FactoryGirl.create(:dj, club_night: club_night) }
 
   before do
     sign_in(:user, user)

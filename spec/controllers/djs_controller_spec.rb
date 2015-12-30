@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe DjsController do
-  let!(:user) { Factory(:confirmed_user) }
-  let!(:club_night) { user.club_nights.create(Factory.attributes_for(:club_night)) }
-  let!(:dj) { Factory(:dj,
+  let!(:user) { FactoryGirl.create(:confirmed_user) }
+  let!(:club_night) { user.club_nights.create(FactoryGirl.attributes_for(:club_night)) }
+  let!(:dj) { FactoryGirl.create(:dj,
                       :club_night => club_night,
                       :dj_name => "Iris",
                       :name => "Karen") }
@@ -94,7 +94,7 @@ describe DjsController do
   describe "#update" do
     it "updates DJ profile" do
       put :update, club_night_id: club_night.id, :id => dj.id,
-      dj: Factory.attributes_for(:dj, :dj_name => "Quadrant")
+      dj: FactoryGirl.attributes_for(:dj, :dj_name => "Quadrant")
       dj.reload
       dj.dj_name.should eq("Quadrant")
     end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Creating Club Nights' do
-    let!(:user) { Factory(:confirmed_user) }
+    let!(:user) { FactoryGirl.create(:confirmed_user) }
 
   before do
     sign_in_as!(user)

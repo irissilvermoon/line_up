@@ -6,8 +6,8 @@ FactoryGirl.define do
 
     factory :confirmed_user do
       sequence(:email) { |n| "user#{n}@user.com" }
-      after_create do |user|
-        user.confirm!
+      after(:create) do |user|
+        user.confirm
       end
     end
   end

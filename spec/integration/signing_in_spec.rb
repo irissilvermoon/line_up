@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Signing in' do
   before do
-    Factory(:user, :email => "iris@gmail.com")
+    FactoryGirl.create(:user, :email => "iris@gmail.com")
   end
 
   scenario 'Signing in via confirmation' do
@@ -12,7 +12,7 @@ feature 'Signing in' do
   end
 
   scenario 'Signing in via form' do
-    User.find_by_email('iris@gmail.com').confirm!
+    User.find_by_email('iris@gmail.com').confirm
     visit '/'
     fill_in 'Email', :with => 'iris@gmail.com'
     fill_in 'Password', :with => 'password'

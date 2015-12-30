@@ -13,7 +13,7 @@ development:
   encoding: unicode
   database: line_up_database
   pool: 5
-  username: karen
+  username: kcaplan
   timeout: 5000
   socket: /usr/local/var/pgsql_socket
 

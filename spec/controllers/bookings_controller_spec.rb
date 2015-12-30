@@ -1,13 +1,14 @@
 require 'spec_helper'
 
 describe BookingsController do
-  let!(:user) { Factory(:confirmed_user) }
-  let!(:club_night) { user.club_nights.create(Factory.attributes_for(:club_night)) }
-  let!(:event) { club_night.events.create(Factory.attributes_for(:event)) }
-  let!(:time_slot) { Factory(:time_slot,
+  let!(:user) { FactoryGirl.create(:confirmed_user) }
+  let!(:club_night) { user.club_nights.create(FactoryGirl.attributes_for(:club_night)) }
+  let!(:event) { club_night.events.create(FactoryGirl.attributes_for(:event)) }
+  let!(:time_slot) { FactoryGirl.create(:time_slot,
                              :event => event,
                              :genres => "DnB") }
-  let!(:dj) { Factory(:dj,
+
+  let!(:dj) { FactoryGirl.create(:dj,
                       :club_night => club_night,
                       :dj_name => "Iris",
                       :name => "Karen") }
@@ -25,7 +26,7 @@ describe BookingsController do
     end
 
     context "with a user that is not a member of a club night" do
-      let!(:existing_user) { Factory(:confirmed_user) }
+      let!(:existing_user) { FactoryGirl.create(:confirmed_user) }
 
       before do
         sign_in(:user, existing_user)
@@ -39,7 +40,7 @@ describe BookingsController do
 
   describe "#create" do
     context "with a Dj that exists" do
-      let!(:dj) { Factory(:dj, :dj_name => "Iris")}
+      let!(:dj) { FactoryGirl.create(:dj, :dj_name => "Iris")}
 
       before do
         club_night.djs << dj
@@ -55,7 +56,7 @@ describe BookingsController do
     end
 
     context "with a Dj already added to a time slot" do
-      let!(:booking) { time_slot.bookings.create(Factory.attributes_for(:booking))}
+      let!(:booking) { time_slot.bookings.create(FactoryGirl.attributes_for(:booking))}
 
       before do
         time_slot.bookings << booking
@@ -73,7 +74,7 @@ describe BookingsController do
 
   describe "#destroy" do
     context "with a DJ already added to a time slot" do
-      let!(:booking) { time_slot.bookings.create(Factory.attributes_for(:booking)) }
+      let!(:booking) { time_slot.bookings.create(FactoryGirl.attributes_for(:booking)) }
 
       before do
         time_slot.bookings << booking

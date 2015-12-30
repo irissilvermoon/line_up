@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe TimeSlotsController do
-  let!(:user) { Factory(:confirmed_user) }
-  let!(:club_night) { user.club_nights.create(Factory.attributes_for(:club_night)) }
-  let!(:event) { club_night.events.create(Factory.attributes_for(:event)) }
-  let!(:time_slot) { Factory(:time_slot,
+  let!(:user) { FactoryGirl.create(:confirmed_user) }
+  let!(:club_night) { user.club_nights.create(FactoryGirl.attributes_for(:club_night)) }
+  let!(:event) { club_night.events.create(FactoryGirl.attributes_for(:event)) }
+  let!(:time_slot) { FactoryGirl.create(:time_slot,
                              :event => event,
                              :genres => "DnB") }
-  let!(:dj) { Factory(:dj, club_night: club_night) }
+  let!(:dj) { FactoryGirl.create(:dj, club_night: club_night) }
 
   before do
     sign_in(:user, user)
@@ -24,7 +24,7 @@ describe TimeSlotsController do
     it "successfully creates a new time slot" do
       expect {
         post :create, :club_night_id => club_night.id, :event_id => event.id,
-          time_slot: Factory.attributes_for(:time_slot, dj_id_list: dj.id)
+          time_slot: FactoryGirl.attributes_for(:time_slot, dj_id_list: dj.id)
       }.to change {
           event.time_slots.count
       }.by(1)
@@ -33,7 +33,7 @@ describe TimeSlotsController do
     it "should add a booking for the dj" do
       expect {
         post :create, :club_night_id => club_night.id, :event_id => event.id,
-          time_slot: Factory.attributes_for(:time_slot, dj_id_list: dj.id)
+          time_slot: FactoryGirl.attributes_for(:time_slot, dj_id_list: dj.id)
       }.to change {
           dj.bookings.count
       }.by(1)
@@ -41,7 +41,7 @@ describe TimeSlotsController do
 
     context "adding a new dj" do
       let(:time_slot_attrs) do
-        attrs = Factory.attributes_for(:time_slot, dj_id_list: "New Rad DJ")
+        attrs = FactoryGirl.attributes_for(:time_slot, dj_id_list: "New Rad DJ")
       end
 
       it "should not error" do
@@ -67,7 +67,7 @@ describe TimeSlotsController do
   describe "#update" do
     it "updates an event" do
       put :update, :club_night_id => club_night.id, :event_id => event.id, :id => time_slot.id,
-      :time_slot => Factory.attributes_for(:time_slot, :genres => "House", dj_id_list: "#{dj.id}")
+      :time_slot => FactoryGirl.attributes_for(:time_slot, :genres => "House", dj_id_list: "#{dj.id}")
       time_slot.reload
       time_slot.genres.should eq("House")
     end

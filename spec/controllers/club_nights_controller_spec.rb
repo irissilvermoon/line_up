@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe ClubNightsController do
-  let(:user) { Factory(:confirmed_user) }
-  let!(:club_night) { user.club_nights.create(Factory.attributes_for(:club_night)) }
+  let(:user) { FactoryGirl.create(:confirmed_user) }
+  let!(:club_night) { user.club_nights.create(FactoryGirl.attributes_for(:club_night)) }
 
   before do
     sign_in(:user, user)
@@ -17,7 +17,7 @@ describe ClubNightsController do
 
   describe "#create" do
     it "successfully creates a new club night" do
-      expect { post :create, club_night: Factory.attributes_for(:club_night) }.to change {
+      expect { post :create, club_night: FactoryGirl.attributes_for(:club_night) }.to change {
         user.club_nights.count
       }.by(1)
     end
@@ -40,7 +40,7 @@ describe ClubNightsController do
   describe "#update" do
     it "should update a club night" do
       put :update, id: club_night,
-      club_night: Factory.attributes_for(:club_night, :name => "DnB Wednesdays")
+      club_night: FactoryGirl.attributes_for(:club_night, :name => "DnB Wednesdays")
       club_night.reload
       club_night.name.should eq("DnB Wednesdays")
     end

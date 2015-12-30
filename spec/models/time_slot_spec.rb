@@ -1,16 +1,16 @@
 require 'spec_helper'
 
 describe TimeSlot do
-  let(:club_night) { ClubNight.create(Factory.attributes_for(:club_night)) }
-  let(:event)      { club_night.events.create(Factory.attributes_for(:event)) }
-  let(:time_slot)  { event.time_slots.create(Factory.attributes_for(:time_slot)) }
+  let(:club_night) { ClubNight.create(FactoryGirl.attributes_for(:club_night)) }
+  let(:event)      { club_night.events.create(FactoryGirl.attributes_for(:event)) }
+  let(:time_slot)  { event.time_slots.create(FactoryGirl.attributes_for(:time_slot)) }
 
   describe "#dj_ids=" do
     context "for existing djs" do
       let (:existing_djs) do
-        existing_dj1 = Factory.create(:dj)
-        existing_dj2 = Factory.create(:dj)
-        existing_dj3 = Factory.create(:dj)
+        existing_dj1 = FactoryGirl.create(:dj)
+        existing_dj2 = FactoryGirl.create(:dj)
+        existing_dj3 = FactoryGirl.create(:dj)
 
         [existing_dj1, existing_dj2, existing_dj3]
       end
@@ -30,8 +30,8 @@ describe TimeSlot do
 
     context "for non-existing djs" do
       let! (:djs) do
-        existing_dj1 = Factory.create(:dj, :club_night => club_night)
-        existing_dj2 = Factory.create(:dj, :club_night => club_night)
+        existing_dj1 = FactoryGirl.create(:dj, :club_night => club_night)
+        existing_dj2 = FactoryGirl.create(:dj, :club_night => club_night)
         non_existing_dj = "Quadrant"
 
         [existing_dj1, existing_dj2, non_existing_dj]

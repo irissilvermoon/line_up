@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require chosen
- *= require jquery.ui.datepicker
+ *= require jquery-ui/datepicker
  *= require token-input-facebook
  *= require foundation_and_overrides
  *= require_tree .

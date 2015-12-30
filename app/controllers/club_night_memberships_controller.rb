@@ -37,8 +37,8 @@ class ClubNightMembershipsController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :remember_me)
+  def club_night_membership_params
+    params.require(:club_night_membership).permit(:club_night_id, :user_id)
   end
 
   def find_club_night
